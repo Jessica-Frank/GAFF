@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Page Fragments</title>
+    </head>
+    <body>
+        <header class="mdl-layout__header mdl-layout__header--waterfall" th:fragment="header">
+            <div class="mdl-layout__header-row">
+                <h1 class="mdl-layout-title">GAFF</h1>
+                <!-- Spacer spreads title and link to opposite sides -->
+                <div class="mdl-layout-spacer"></div>
+                <a class="mdl-navigation__link" href="#">Log In</a>
+            </div>
+        </header>
+
+        <footer class="mdl-mini-footer" th:fragment="footer">
+            <div class="mdl-mini-footer__left-section">
+                <div class="mdl-logo title-with-font">GAFF</div>
+                <ul class="mdl-mini-footer__link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy & Terms</a></li>
+                </ul>
+            </div>
+            <div class="mdl-mini-footer__right-section">
+                Game data retrieved from 
+                <a href="https://api.rawg.io/docs/" style="color: inherit;">
+                    RAWG API 
+                </a>
+            </div>
+        </footer>
+    </body>
+</html>
