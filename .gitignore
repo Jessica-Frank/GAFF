@@ -18,3 +18,6 @@
 
 # Gradle cache
 .gradle
+
+#Build files
+build/
