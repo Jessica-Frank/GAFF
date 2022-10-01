@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head> 
+        <title>GAFF</title> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-teal.min.css" />
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    </head>
+    <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
+        <div th:insert="Fragments :: header">...</div>
+        <div id="body-div">
+            <h2 style="text-align:center;">Promotion and Demotion of Admins</h2>
+            <h6 style="text-align:center; margin-top: 100px">Enter the name of the Moderator you want to Promote or Demote</h6>
+            <form style="display: flex; flex-direction: column">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style= "margin:0px auto; display: block">
+                    <input class="mdl-textfield__input" type="text" id="name-input"/>
+                    <label class="mdl-textfield__label" for="name-input">Enter Moderator Name</label>
+                </div>
+                <div style= "margin:0px auto; display: block">
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="margin:0px auto; display: inline; margin-right: 10px;">
+                    Promote
+                </button>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="margin:0px auto; display: inline; margin-left: 10px;">
+                    Demote 
+                </button>
+                </div>
+            </form>
+        </div>
+        <div th:insert="Fragments :: footer">...</div>
+    </body>
+</html>

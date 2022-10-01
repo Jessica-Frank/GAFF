@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head> 
+        <title>GAFF</title> 
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-teal.min.css" />
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+            <style>
+            td {text-align: left !important} 
+            th {text-align: left !important}
+            </style>
+    </head>
+    <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
+        <div th:insert="Fragments :: header">...</div>
+        <div id="body-div">
+            <h2 style="text-align:center; margin-bottom: 100px">Recent Activity</h2>
+            <div >
+            <table class="mdl-data-table mdl-js-data-table" style="margin-left: auto; margin-right: auto;">
+                <thead>
+                    <tr>
+                        <th class="mdl-data-table__cell--non-numeric">Activity</th>
+                        <th>User</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Alex did amazing and finished his pages!</td>
+                        <td>Admin</td>
+                        <td>Just Now</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Not quite sure when Alec will start!</td>
+                        <td>Player</td>
+                        <td>Unknown System Error</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Jessica is amazing!</td>
+                        <td>Moderator</td>
+                        <td>Always</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Alex is working hard!</td>
+                        <td>Admin</td>
+                        <td>Since Today @ 7:30pm</td>
+                    </tr>
+                    <tr>
+                        <td class="mdl-data-table__cell--non-numeric">Alec hasn't started yet!</td>
+                        <td>Player</td>
+                        <td>Since August</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+        <div th:insert="Fragments :: footer">...</div>
+    </body>
+</html>
