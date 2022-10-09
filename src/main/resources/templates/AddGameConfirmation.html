@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<!--
+Confirmation page for the game-adding form
+Last updated 10/9/2022
+Author(s): Jessica Frank
+-->
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head> 
+        <title>GAFF</title> 
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-teal.min.css" />
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    </head>
+    <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
+        <div th:insert="Fragments :: header">...</div>
+        <div id="body-div">
+            <h2 style="text-align:center;">Your Game has been Added</h2>
+            <p>More detailed success message coming soon</p>
+        </div>
+        <div th:insert="Fragments :: footer">...</div>
+    </body>
+</html>
