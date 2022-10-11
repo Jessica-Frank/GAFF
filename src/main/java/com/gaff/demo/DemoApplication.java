@@ -1,5 +1,11 @@
 package com.gaff.demo;
 
+/*
+ * This class runs the site.
+ * Last updated 10/9/2022
+ * Author(s): Jessica Frank
+ */
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

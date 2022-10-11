@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Page 1 of the game-adding form
+The login page for the site
 Last updated 10/9/2022
 Author(s): Jessica Frank
 -->
@@ -17,18 +17,18 @@ Author(s): Jessica Frank
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
-            <h2 style="text-align:center;">Add New Game</h2>
-            <form style="display: flex; flex-direction: column" action="/add_game/details" method="POST">
+            <h2 style="text-align:center;">Login</h2>
+            <form style="display: flex; flex-direction: column" th:action="@{/login}" method="post">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin:0px auto;">
-                    <input class="mdl-textfield__input" type="text" id="name-input"/>
-                    <label class="mdl-textfield__label" for="name-input">Game Name</label>
+                    <input class="mdl-textfield__input" type="text" id="username" name="username" autofocus="true"/>
+                    <label class="mdl-textfield__label" for="username">Username</label>
                 </div>
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin:0px auto;">
-                    <input class="mdl-textfield__input" type="text" id="key-input"/>
-                    <label class="mdl-textfield__label" for="key-input">Moderator Key Number</label>
+                    <input class="mdl-textfield__input" type="password" id="password" name="password"/>
+                    <label class="mdl-textfield__label" for="password">Password</label>
                 </div>
                 <div style="margin: auto"><button type="submit" class="mdl-button mdl-js-button mdl-button--raised" style="margin-bottom: 5%;margin-left: 2.5%;margin-right: 2.5%;">
-                    Submit
+                    Login
                 </button></div>
             </form>
         </div>
