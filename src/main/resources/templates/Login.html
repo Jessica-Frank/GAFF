@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 The login page for the site
-Last updated 10/9/2022
+Last updated 10/14/2022
 Author(s): Jessica Frank
 -->
 <html lang="en"
@@ -16,8 +16,13 @@ Author(s): Jessica Frank
     </head>
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
-        <div id="body-div">
+        <div id="body-div" style="text-align: center">
             <h2 style="text-align:center;">Login</h2>
+            <div th:if="${again}==true">                 
+                <span class="mdl-chip" style="background-color: aquamarine;">
+                    <span class="mdl-chip__text">You have been logged out</span>
+                </span>
+            </div>
             <form style="display: flex; flex-direction: column" th:action="@{/login}" method="post">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="margin:0px auto;">
                     <input class="mdl-textfield__input" type="text" id="username" name="username" autofocus="true"/>
@@ -28,8 +33,8 @@ Author(s): Jessica Frank
                     <label class="mdl-textfield__label" for="password">Password</label>
                 </div>
                 <div style="margin: auto"><button type="submit" class="mdl-button mdl-js-button mdl-button--raised" style="margin-bottom: 5%;margin-left: 2.5%;margin-right: 2.5%;">
-                    Login
-                </button></div>
+                        Login
+                    </button></div>
             </form>
         </div>
         <div th:insert="Fragments :: footer">...</div>
