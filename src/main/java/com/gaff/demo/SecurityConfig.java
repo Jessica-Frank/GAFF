@@ -4,7 +4,7 @@ package com.gaff.demo;
  * This class controls the site's security, and restricts sections of the site.
  * It currently uses set passwords and usernames for each role, 
  * since the database is not set up yet.
- * Last updated 10/9/2022
+ * Last updated 10/14/2022
  * Author(s): Jessica Frank
  */
 
@@ -43,8 +43,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf()
-            .disable()
+        http
+            .csrf().disable()
             .authorizeRequests()
             .antMatchers("/")
                 .hasAnyRole(Role.player, Role.admin, Role.moderator)
@@ -55,6 +55,7 @@ public class SecurityConfig {
             .antMatchers("/view_logs")
                 .hasAnyRole(Role.admin)
             .and().formLogin().loginPage("/login").permitAll()
+            .and().logout().logoutSuccessUrl("/login/again")
             .and().httpBasic();
 
         return http.build();

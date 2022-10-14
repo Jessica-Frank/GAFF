@@ -2,7 +2,7 @@ package com.gaff.demo;
 
 /*
  * This controller is for general sections of the site.
- * Last updated 10/9/2022
+ * Last updated 10/14/2022
  * Author(s): Jessica Frank
  */
 
@@ -37,6 +37,12 @@ public class DemoController {
     
     @GetMapping("/login")
     public String login(Model model) {
+        return "Login";
+    }
+    
+    @GetMapping("/login/again")
+    public String loginAgain (Model model) {
+        model.addAttribute("again", true);
         return "Login";
     }
 
