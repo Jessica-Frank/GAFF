@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head> 
+        <title>GAFF</title> 
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-teal.min.css" />
+        <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    </head>
+    <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
+        <div th:insert="Fragments :: header">...</div>
+        <div id="body-div">
+            <h1 style="text-align:center;">Name</h1>
+            <button class="mdl-button mdl-js-button mdl-button--raised" style="display:block; margin:0px auto; display: inline-block;">
+                Steam
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised" style="margin:0px auto; display: inline-block;">
+                Discord
+            </button>
+            <button class="mdl-button mdl-js-button mdl-button--raised" style="margin:0px auto; display: inline-block;" >
+                Twitter
+            </button>
+            
+
+<div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">Game #1</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Cool game
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      View Game Details
+    </a>
+  </div>
+</div>
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">Game #2</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Cool game 2
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      View Game Details
+    </a>
+  </div>
+</div>
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+  <div class="mdl-card__title mdl-card--expand">
+    <h2 class="mdl-card__title-text">Game #3</h2>
+  </div>
+  <div class="mdl-card__supporting-text">
+    Cool game
+  </div>
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+      View Game Details
+    </a>
+  </div>
+</div>
+        </div>
+        <div th:insert="Fragments :: footer">...</div>
+    </body>
+</html>
+ 
+
+<style>
+    .demo-card-square {
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+border: 5px solid #FFFF00;
+padding: 10px;
+}
+</style>
+    
