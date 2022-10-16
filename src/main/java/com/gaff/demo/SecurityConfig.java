@@ -4,7 +4,7 @@ package com.gaff.demo;
  * This class controls the site's security, and restricts sections of the site.
  * It currently uses set passwords and usernames for each role, 
  * since the database is not set up yet.
- * Last updated 10/14/2022
+ * Last updated 10/15/2022
  * Author(s): Jessica Frank
  */
 
@@ -49,6 +49,8 @@ public class SecurityConfig {
             .antMatchers("/")
                 .hasAnyRole(Role.player, Role.admin, Role.moderator)
             .antMatchers("/add_game/**")
+                .hasAnyRole(Role.moderator)
+            .antMatchers("/edit_game/**")
                 .hasAnyRole(Role.moderator)
             .antMatchers("/change_role")
                 .hasAnyRole(Role.admin)
