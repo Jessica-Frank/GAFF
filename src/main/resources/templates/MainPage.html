@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 The site's home page
-Last updated 10/9/2022
+Last updated 10/15/2022
 Author(s): Jessica Frank
 -->
 <html lang="en"
@@ -21,7 +21,17 @@ Author(s): Jessica Frank
             <h4 style="text-align:center;">A Gaming App for Finding Friends</h4>
             <div th:if="${hasPlayerRole}">
                 Player Section <br/>
-                (to be added)
+                <ul>
+                    <li>
+                        <a href="/game_list">Game List</a>
+                    </li>
+                    <li>
+                        <a href="/game_details">Individual Game Details</a>
+                    </li>
+                    <li>
+                        <a href="/player_profile">Player Profile</a>
+                    </li>
+                </ul>
             </div>
             <div th:if="${hasModRole}">
                 Moderator Section <br/>
@@ -30,7 +40,7 @@ Author(s): Jessica Frank
                         <a href="/add_game/search">Add new game</a>
                     </li>
                     <li>
-                        Edit game (to be added)
+                        <a href="/edit_game">Edit game</a>
                     </li>
                 </ul>
             </div>

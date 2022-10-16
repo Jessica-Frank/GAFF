@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 Confirmation page for the game-adding form
-Last updated 10/9/2022
+Last updated 10/15/2022
 Author(s): Jessica Frank
 -->
 <html lang="en"
@@ -18,7 +18,14 @@ Author(s): Jessica Frank
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
             <h2 style="text-align:center;">Your Game has been Added</h2>
-            <p>More detailed success message coming soon</p>
+            <div style="text-align:center;">
+                <h6 style="margin: 10px auto; display: inline-block; text-align:left;">
+                    Name: <span th:text="${name}">NAME</span><br/>
+                    Description: <span th:text="${details}">DESCRIPTION</span><br/>
+                    Genre: <span th:text="${genre}">GENRE</span><br/>
+                    Platforms: <span th:text="${platforms}">PLATFORM 1, PLATFORM 2</span>
+                </h6>
+            </div>
         </div>
         <div th:insert="Fragments :: footer">...</div>
     </body>
