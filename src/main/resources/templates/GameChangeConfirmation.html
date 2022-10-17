@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Confirmation page for the game-adding form
+Confirmation page for the game-adding and game-editing forms
 Last updated 10/15/2022
 Author(s): Jessica Frank
 -->
@@ -17,7 +17,7 @@ Author(s): Jessica Frank
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
-            <h2 style="text-align:center;">Your Game has been Added</h2>
+            <h2 style="text-align:center;">Your Game has been <span th:text="${action}">ADDED</span></h2>
             <div style="text-align:center;">
                 <h6 style="margin: 10px auto; display: inline-block; text-align:left;">
                     Name: <span th:text="${name}">NAME</span><br/>
@@ -25,6 +25,12 @@ Author(s): Jessica Frank
                     Genre: <span th:text="${genre}">GENRE</span><br/>
                     Platforms: <span th:text="${platforms}">PLATFORM 1, PLATFORM 2</span>
                 </h6>
+                <div>
+                    <a th:if="${action}=='Added'" href="/add_game/search">Add another game</a>
+                </div>
+                <div>
+                    <a href="/">Home</a>
+                </div>
             </div>
         </div>
         <div th:insert="Fragments :: footer">...</div>
