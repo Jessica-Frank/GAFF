@@ -18,18 +18,18 @@ Author(s): Jessica Frank
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
             <h2 style="text-align:center;">Edit Game Details</h2>
-            <div style="text-align:center;">GAFF data for: <span>GAME NAME</span></div>
-            <form style="display: flex; flex-direction: column" action = "/add_game/submit" method="POST">
+            <div style="text-align:center;">Current details for: <span th:text="${currentName}">GAME NAME</span></div>
+            <form style="display: flex; flex-direction: column" action = "/edit_game/submit" method="POST">
                 <div style="display: flex; flex-direction: row">
                     <div style="margin:2.5%; display: flex; flex-direction: column; width:30%; border:2px solid green;">
                         <h6 style="text-align: center">Details</h6>
                         <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"
                              style="display:block; margin:0px auto;">
-                            <input class="mdl-textfield__input" type="text" id="name-input"/>
+                            <input class="mdl-textfield__input" type="text" id="name-input" name="name" th:value="${newName}"/>
                             <label class="mdl-textfield__label" for="name-input">Game name</label>
                         </div>
                         <div class="mdl-textfield mdl-js-textfield" style="display:block; margin:0px auto;">
-                            <textarea class="mdl-textfield__input" rows= "5" id="game-description"></textarea>
+                            <textarea class="mdl-textfield__input" rows= "5" id="game-description" name="details" th:text="${currentDetails}"></textarea>
                             <label class="mdl-textfield__label" for="game-description">Game description</label>
                         </div>
                     </div>
@@ -38,37 +38,37 @@ Author(s): Jessica Frank
                         <ul>
                             <li class="mdl-list__item" ><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-1">
-                                        <input type="radio" id="genre-option-1" class="mdl-radio__button" name="genre-options" value="1"/>
+                                        <input type="radio" id="genre-option-1" class="mdl-radio__button" name="genreOptions" value="Action" th:checked="${genre=='action'}"/>
                                         Action
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-2">
-                                        <input type="radio" id="genre-option-2" class="mdl-radio__button" name="genre-options" value="2"/>
+                                        <input type="radio" id="genre-option-2" class="mdl-radio__button" name="genreOptions" value="Adventure" th:checked="${genre=='adventure'}"/>
                                         Adventure
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-3">
-                                        <input type="radio" id="genre-option-3" class="mdl-radio__button" name="genre-options" value="3"/>
+                                        <input type="radio" id="genre-option-3" class="mdl-radio__button" name="genreOptions" value="Simulation" th:checked="${genre=='simulation'}"/>
                                         Simulation
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-4">
-                                        <input type="radio" id="genre-option-4" class="mdl-radio__button" name="genre-options" value="4"/>
+                                        <input type="radio" id="genre-option-4" class="mdl-radio__button" name="genreOptions" value="Puzzle" th:checked="${genre=='puzzle'}"/>
                                         Puzzle
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-5">
-                                        <input type="radio" id="genre-option-5" class="mdl-radio__button" name="genre-options" value="5"/>
+                                        <input type="radio" id="genre-option-5" class="mdl-radio__button" name="genreOptions" value="Racing" th:checked="${genre=='racing'}"/>
                                         Racing
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-6">
-                                        <input type="radio" id="genre-option-6" class="mdl-radio__button" name="genre-options" value="6"/>
+                                        <input type="radio" id="genre-option-6" class="mdl-radio__button" name="genreOptions" value="Sports" th:checked="${genre=='sports'}"/>
                                         Sports
                                     </label>                                
                                 </span></li>
@@ -79,19 +79,19 @@ Author(s): Jessica Frank
                         <ul>
                             <li class="mdl-list__item" ><span class="mdl-list__item-secondary-action">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="platform-option-1">
-                                        <input type="checkbox" id="platform-option-1" class="mdl-checkbox__input" name="platform-options" value="1"/>
+                                        <input type="checkbox" id="platform-option-1" class="mdl-checkbox__input" name="platformOptions" value="PC" th:checked="${isPC}"/>
                                         PC
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="platform-option-2">
-                                        <input type="checkbox" id="platform-option-2" class="mdl-checkbox__input" name="platform-options" value="2"/>
+                                        <input type="checkbox" id="platform-option-2" class="mdl-checkbox__input" name="platformOptions" value="Console" th:checked="${isConsole}"/>
                                         Console
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="platform-option-3">
-                                        <input type="checkbox" id="platform-option-3" class="mdl-checkbox__input" name="platform-options" value="3"/>
+                                        <input type="checkbox" id="platform-option-3" class="mdl-checkbox__input" name="platformOptions" value="Phone" th:checked="${isMobile}"/>
                                         Mobile
                                     </label>                                
                                 </span></li>
