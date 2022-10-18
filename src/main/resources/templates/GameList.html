@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
             <h1 style="text-align:center;">List</h1>
-            <button class="mdl-button mdl-js-button mdl-button--raised">
+            <button id="myButton" class="mdl-button mdl-js-button mdl-button--raised">
                 Action
             </button>
             <button class="mdl-button mdl-js-button mdl-button--raised">
@@ -34,48 +34,57 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </button>
             <button class="mdl-button mdl-js-button mdl-button--raised">
                 Sports
-            </button>    
+            </button>   
 
-<div class="demo-card-square mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">Game #1</h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    Cool game
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      View Game Details
-    </a>
-  </div>
-</div>
+            <script type="text/javascript">
+                document.getElementById("myButton").onclick = function () {
+                location.href = "/game_details";
+                };
+            </script>
+
+
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">Game #2</h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    Cool game 2
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      View Game Details
-    </a>
-  </div>
-</div>
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Apex Legends</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Apex Legends Description
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a onclick="location.href = '/game_details';" id="myButton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        View Game Details
+                    </a>
+                </div>
+            </div>
             <div class="demo-card-square mdl-card mdl-shadow--2dp">
-  <div class="mdl-card__title mdl-card--expand">
-    <h2 class="mdl-card__title-text">Game #3</h2>
-  </div>
-  <div class="mdl-card__supporting-text">
-    Cool game
-  </div>
-  <div class="mdl-card__actions mdl-card--border">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-      View Game Details
-    </a>
-  </div>
-</div>
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Rocket League</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Rocket League Description
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a onclick="location.href = '/game_details';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        View Game Details
+                    </a>
+                </div>
+            </div>
+            <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title mdl-card--expand">
+                    <h2 class="mdl-card__title-text">Counter Strike Global Offensive</h2>
+                </div>
+                <div class="mdl-card__supporting-text">
+                    Counter Strike Global Offensive Description
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                    <a onclick="location.href = '/game_details';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        View Game Details
+                    </a>
+                </div>
+            </div>
         </div>
         <div th:insert="Fragments :: footer">...</div>
     </body>
+
+
 </html>
