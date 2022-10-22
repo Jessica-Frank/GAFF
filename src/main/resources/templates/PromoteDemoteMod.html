@@ -17,30 +17,35 @@ Author(s): Alex Wesley
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
             <h2 style="text-align:center;">Promotion and Demotion</h2>
-            <h6 style="text-align:center; margin-top: 100px">Enter the name of the user you want to Promote or Demote</h6>
-            <form style="display: flex; flex-direction: column">
+            <div style="text-align:center; margin-top: 50px" th:if="${again}==true">                 
+                <span class="mdl-chip" style="background-color: aquamarine;">
+                    <span class="mdl-chip__text">Congratulations, you have changed <span th:text="${name}"></span> to <span th:text="${role}"></span></span>
+                </span>
+            </div>
+            <h6 style="text-align:center; margin-top: 50px">Enter the name of the user you want to Promote or Demote</h6>
+            <form style="display: flex; flex-direction: column" action="/change_role" method="POST">
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style= "margin:0px auto; display: block">
-                    <input class="mdl-textfield__input" type="text" id="name-input"/>
+                    <input class="mdl-textfield__input" type="text" id="name-input" name="nameVar"/>
                     <label class="mdl-textfield__label" for="name-input">Enter user's Name</label>
                 </div>
                 <div style= "margin:0px auto; display: block">
                     <ul>
-                            <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
-                                    <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="user-type-1">
-                                        <input type="radio" id="user-type-1" class="mdl-radio__button" name="userType" value="Player"/>
-                                        Player
-                                    </label>                                
-                                </span></li>
-                            <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
-                                    <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="user-type-2">
-                                        <input type="radio" id="user-type-2" class="mdl-radio__button" name="userType" value="Moderator"/>
-                                        Moderator
-                                    </label>                                
-                                </span></li>
-                        </ul>
-                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="margin:0px auto; display: inline; margin-left: 10px;">
-                    Submit 
-                </button>
+                        <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
+                                <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="user-type-1">
+                                    <input type="radio" id="user-type-1" class="mdl-radio__button" name="userType" value="Player" checked = "true"/>
+                                    Player
+                                </label>                                
+                            </span></li>
+                        <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
+                                <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="user-type-2">
+                                    <input type="radio" id="user-type-2" class="mdl-radio__button" name="userType" value="Moderator"/>
+                                    Moderator
+                                </label>                                
+                            </span></li>
+                    </ul>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" style="text-align:center; margin:0px auto; display: block" type="submit">
+                        Submit 
+                    </button>
                 </div>
             </form>
         </div>
