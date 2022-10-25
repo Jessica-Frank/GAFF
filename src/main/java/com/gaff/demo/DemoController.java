@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class DemoController {
     @GetMapping("/")
-    public String main(Model model) {
+    public String getMainPage(Model model) {
         //Get list of user roles
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         
@@ -31,17 +31,20 @@ public class DemoController {
           .anyMatch(r -> r.getAuthority().equals("ROLE_"+Role.admin));
         model.addAttribute("hasAdminRole", hasAdminRole);
         
+        boolean hasAnyRole = hasAdminRole || hasModRole || hasPlayerRole;
+        model.addAttribute("hasAnyRole", hasAnyRole);
+        
         //Return the home page
         return "MainPage";
     }
     
     @GetMapping("/login")
-    public String login(Model model) {
+    public String getLoginPage(Model model) {
         return "Login";
     }
     
     @GetMapping("/login/again")
-    public String loginAgain (Model model) {
+    public String getLogoutPage (Model model) {
         model.addAttribute("again", true);
         return "Login";
     }
