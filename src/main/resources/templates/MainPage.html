@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 The site's home page
-Last updated 10/18/2022
+Last updated 10/21/2022
 Author(s): Jessica Frank
 -->
 <html lang="en"
@@ -33,7 +33,7 @@ Author(s): Jessica Frank
             <h1 style="text-align:center;">GAFF</h1>
             <h4 style="text-align:center;">A Gaming App for Finding Friends</h4>
             <div style="margin-bottom: 50px">
-                <div class="demo-card-wide mdl-shadow--2dp" th:if="${hasPlayerRole}">
+                <div class="demo-card-wide mdl-shadow--2dp" th:if="${hasAnyRole}">
                     <div class="mdl-card__title">
                         <span class="mdl-card__title-text">Player Actions</span>
                     </div>
@@ -41,9 +41,6 @@ Author(s): Jessica Frank
                         <a class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button" href="/game_list">
                             Game List
                         </a>
-<!--                        <a class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button" href="/game_details">
-                            Individual Game Details (Temporary Link)
-                        </a>-->
                         <a class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button" href="/player_profile">
                             View My Profile
                         </a>
@@ -57,9 +54,6 @@ Author(s): Jessica Frank
                         <a class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button" href="/add_game/search">
                             Add new game
                         </a>
-<!--                        <a class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button" href="/edit_game">
-                            Edit game (Temporary Link)
-                        </a>-->
                     </div>
                 </div>
                 <div class="demo-card-wide mdl-shadow--2dp" th:if="${hasAdminRole}">
