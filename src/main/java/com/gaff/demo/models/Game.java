@@ -8,46 +8,49 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /*
- * This class represents the GAFF user's information
- * Last updated 10/25/2022
+ * This class represents a game's information
+ * Last updated 10/28/2022
  * Author(s): Jessica Frank
  */
 @Entity
-@Table(name="games")
+@Table(name = "games")
 public class Game implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
     private String genre;
     private String description;
-    
-    private boolean isPC;
+
+    private boolean isComputer;
     private boolean isConsole;
     private boolean isMobile;
 
     public Game() {
     }
 
-    public Game(String name, String genre, String description, boolean isPC, boolean isConsole, boolean isMobile) {
+    public Game(String name, String genre, String description, boolean isComputer, boolean isConsole, boolean isMobile) {
         this.name = name;
         this.genre = genre;
         this.description = description;
-        this.isPC = isPC;
+        this.isComputer = isComputer;
         this.isConsole = isConsole;
         this.isMobile = isMobile;
     }
 
-    public Game(long id, String name, String genre, String description, boolean isPC, boolean isConsole, boolean isMobile) {
+    public Game(long id, String name, String genre, String description, boolean isComputer, boolean isConsole, boolean isMobile) {
         this.id = id;
         this.name = name;
         this.genre = genre;
         this.description = description;
-        this.isPC = isPC;
+        this.isComputer = isComputer;
         this.isConsole = isConsole;
         this.isMobile = isMobile;
     }
+
+    //================= GETTERS ===============
 
     public long getId() {
         return id;
@@ -65,17 +68,19 @@ public class Game implements Serializable {
         return description;
     }
 
-    public boolean isIsPC() {
-        return isPC;
+    public boolean getIsComputer() {
+        return isComputer;
     }
 
-    public boolean isIsConsole() {
+    public boolean getIsConsole() {
         return isConsole;
     }
 
-    public boolean isIsMobile() {
+    public boolean getIsMobile() {
         return isMobile;
     }
+    
+    //================= SETTERS ===============
 
     public void setId(long id) {
         this.id = id;
@@ -93,8 +98,8 @@ public class Game implements Serializable {
         this.description = description;
     }
 
-    public void setIsPC(boolean isPC) {
-        this.isPC = isPC;
+    public void setIsComputer(boolean isComputer) {
+        this.isComputer = isComputer;
     }
 
     public void setIsConsole(boolean isConsole) {
@@ -104,6 +109,5 @@ public class Game implements Serializable {
     public void setIsMobile(boolean isMobile) {
         this.isMobile = isMobile;
     }
-    
-    
+
 }

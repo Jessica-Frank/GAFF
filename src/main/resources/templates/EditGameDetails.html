@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 Page 2 of the game-adding form
-Last updated 10/9/2022
+Last updated 10/28/2022
 Author(s): Jessica Frank
 -->
 <html lang="en"
@@ -76,6 +76,7 @@ Author(s): Jessica Frank
                     </div>
                     <div style="margin:2.5%; display: flex; flex-direction: column; width:30%; border:2px solid green;">
                         <h6 style="text-align: center">Platforms</h6>
+                        <input type="hidden" name="platformOptions" value="None"/>
                         <ul>
                             <li class="mdl-list__item" ><span class="mdl-list__item-secondary-action">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="platform-option-1">
@@ -91,7 +92,7 @@ Author(s): Jessica Frank
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="platform-option-3">
-                                        <input type="checkbox" id="platform-option-3" class="mdl-checkbox__input" name="platformOptions" value="Phone" th:checked="${isMobile}"/>
+                                        <input type="checkbox" id="platform-option-3" class="mdl-checkbox__input" name="platformOptions" value="Mobile" th:checked="${isMobile}"/>
                                         Mobile
                                     </label>                                
                                 </span></li>

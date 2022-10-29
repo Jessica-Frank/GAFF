@@ -2,9 +2,12 @@ package com.gaff.demo;
 
 /*
  * This controller is for moderator-specific sections of the site.
- * Last updated 10/15/2022
+ * Last updated 10/28/2022
  * Author(s): Jessica Frank
  */
+
+import com.gaff.demo.models.GameRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ModController {
+    
+    @Autowired
+    GameRepository gameRep;
 
     @GetMapping("/add_game/search")
     public String addGameSearch(Model model) {
@@ -40,11 +46,24 @@ public class ModController {
             @RequestParam String details, @RequestParam String genreOptions,
             @RequestParam String[] platformOptions) {
 
-        String platformString = platformOptions[0];
-        for (int i = 1; i < platformOptions.length; i++) {
-            platformString += ", " + platformOptions[i];
+        String platformString = "";
+        boolean isPC = false;
+        boolean isConsole = false;
+        boolean isMobile = false;
+
+        for (String option : platformOptions) {
+            platformString += " " + option;
+            switch (option) {
+                case "PC" -> isPC = true;
+                case "Console" -> isConsole = true;
+                case "Mobile" -> isMobile = true;
+            }
         }
 
+        //Add the game to the database
+        gameRep.addNewGame(name, genreOptions, details, isPC, isConsole, isMobile);
+
+        //Send game information to the confirmation page
         model.addAttribute("name", name);
         model.addAttribute("details", details);
         model.addAttribute("genre", genreOptions);
