@@ -2,10 +2,10 @@ package com.gaff.demo.models;
 
 /*
  * This class interacts with the game database.
- * Last updated 10/25/2022
+ * Last updated 10/28/2022
  * Author(s): Jessica Frank
  */
-
+import java.sql.PreparedStatement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,50 +23,66 @@ public class GameRepository {
     NamedParameterJdbcTemplate template;
 
     public List<Game> getAllGames() {
-        String query = "SELECT id, name, genre, description, isPC, isConsole, isMobile FROM games";
+        String query = "SELECT id, name, genre, description, "
+                + "is_computer, is_console, is_mobile FROM games";
         return template.query(query,
                 (result, rowNum)
-                -> new Game(result.getLong("id"), result.getString("name"),
-                        result.getString("genre"), result.getString("description"),
-                        result.getBoolean("isPC"), result.getBoolean("isPC"),
-                        result.getBoolean("isMobile")));
+                -> new Game(
+                        result.getLong("id"),
+                        result.getString("name"),
+                        result.getString("genre"),
+                        result.getString("description"),
+                        result.getBoolean("is_computer"),
+                        result.getBoolean("is_console"),
+                        result.getBoolean("is_mobile")
+                )
+        );
     }
 
     public Game getGameById(long id) {
-        SqlParameterSource namedParameters = new MapSqlParameterSource().addValue("id", id);
+        SqlParameterSource namedParameters
+                = new MapSqlParameterSource().addValue("id", id);
         String query = "SELECT * FROM games WHERE id=:id";
         return template.queryForObject(query, namedParameters,
                 BeanPropertyRowMapper.newInstance(Game.class));
     }
 
-    public int addNewGame(String name, String genre, String description,
-            boolean isPC, boolean isConsole, boolean isMobile) {
+    public void addNewGame(String name, String genre, String description,
+            boolean isComputer, boolean isConsole, boolean isMobile) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
         paramMap.put("genre", genre);
         paramMap.put("description", description);
-        paramMap.put("isPC", isPC);
+        paramMap.put("isComputer", isComputer);
         paramMap.put("isConsole", isConsole);
         paramMap.put("isMobile", isMobile);
+
         String query = "INSERT INTO games"
-                + "(name, genre, description, isPC, isConsole, isMobile) "
-                + "VALUES(:name, :genre, :description, :isPC, :isConsole, :isMobile)";
-        return template.update(query, paramMap);
+                + "(name, genre, description, "
+                + "is_computer, is_console, is_mobile) "
+                + "VALUES(:name, :genre, :description, "
+                + ":isComputer, :isConsole, :isMobile)";
+
+        template.execute(query, paramMap,
+                (PreparedStatement ps) -> ps.executeUpdate());
     }
-    
-    public int editGame(long id, String name, String genre, String description,
-            boolean isPC, boolean isConsole, boolean isMobile) {
+
+    public void editGame(long id, String name, String genre, String description,
+            boolean isComputer, boolean isConsole, boolean isMobile) {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
         paramMap.put("genre", genre);
         paramMap.put("description", description);
-        paramMap.put("isPC", isPC);
+        paramMap.put("isComputer", isComputer);
         paramMap.put("isConsole", isConsole);
         paramMap.put("isMobile", isMobile);
+
         String query = "UPDATE games SET"
                 + "name = :name, genre = :genre, description = :description, "
-                + "isPC = :isPC, isConsole = :isConsole, isMobile = :isMobile "
-                + "WHERE id = :id";
-        return template.update(query, paramMap);
+                + "is_computer = :isComputer, is_console = :isConsole, "
+                + "is_mobile = :isMobile WHERE id = :id";
+
+        template.execute(query, paramMap,
+                (PreparedStatement ps) -> ps.executeUpdate());
     }
 }

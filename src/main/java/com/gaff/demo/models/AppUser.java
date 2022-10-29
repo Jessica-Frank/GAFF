@@ -9,13 +9,14 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 /*
- * This class represents the GAFF user's information
- * Last updated 10/25/2022
+ * This class represents the GAFF user's information.
+ * It is not named User to avoid conflicts with the User class used for login and security
+ * Last updated 10/28/2022
  * Author(s): Jessica Frank
  */
 @Entity
 @Table(name="users")
-public class User implements Serializable {
+public class AppUser implements Serializable {
     @Transient
     public static String ROLE_ADMIN = "ADM";
     @Transient
@@ -25,7 +26,7 @@ public class User implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     
     private String name;
     private String userRole;
@@ -33,10 +34,10 @@ public class User implements Serializable {
     private String discordLink;
     private String steamLink;
 
-    public User() {
+    public AppUser() {
     }
 
-    public User(String name, String userRole, String bio, String discordLink, String steamLink) {
+    public AppUser(String name, String userRole, String bio, String discordLink, String steamLink) {
         this.name = name;
         this.userRole = userRole;
         this.bio = bio;
@@ -44,7 +45,7 @@ public class User implements Serializable {
         this.steamLink = steamLink;
     }
     
-    public User(int id, String name, String userRole, String bio, String discordLink, String steamLink) {
+    public AppUser(long id, String name, String userRole, String bio, String discordLink, String steamLink) {
         this.id = id;
         this.name = name;
         this.userRole = userRole;
@@ -52,8 +53,10 @@ public class User implements Serializable {
         this.discordLink = discordLink;
         this.steamLink = steamLink;
     }
+    
+    //================= GETTERS ===============
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
@@ -77,7 +80,9 @@ public class User implements Serializable {
         return steamLink;
     }
 
-    public void setId(int id) {
+    //================= GETTERS ===============
+
+    public void setId(long id) {
         this.id = id;
     }
 
