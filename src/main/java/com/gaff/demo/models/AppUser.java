@@ -15,19 +15,20 @@ import javax.persistence.Transient;
  * Author(s): Jessica Frank
  */
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class AppUser implements Serializable {
+
     @Transient
-    public static String ROLE_ADMIN = "ADM";
+    public static final String ROLE_ADMIN = "ADM";
     @Transient
-    public static String ROLE_MODERATOR = "MOD";
+    public static final String ROLE_MODERATOR = "MOD";
     @Transient
-    public static String ROLE_PLAYER = "PLY";
-    
+    public static final String ROLE_PLAYER = "PLY";
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String name;
     private String userRole;
     private String bio;
@@ -44,7 +45,7 @@ public class AppUser implements Serializable {
         this.discordLink = discordLink;
         this.steamLink = steamLink;
     }
-    
+
     public AppUser(long id, String name, String userRole, String bio, String discordLink, String steamLink) {
         this.id = id;
         this.name = name;
@@ -53,9 +54,8 @@ public class AppUser implements Serializable {
         this.discordLink = discordLink;
         this.steamLink = steamLink;
     }
-    
-    //================= GETTERS ===============
 
+    //================= GETTERS ===============
     public long getId() {
         return id;
     }
@@ -80,8 +80,7 @@ public class AppUser implements Serializable {
         return steamLink;
     }
 
-    //================= GETTERS ===============
-
+    //================= SETTERS ===============
     public void setId(long id) {
         this.id = id;
     }
@@ -105,6 +104,5 @@ public class AppUser implements Serializable {
     public void setSteamLink(String steamLink) {
         this.steamLink = steamLink;
     }
-    
-    
+
 }

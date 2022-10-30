@@ -5,7 +5,6 @@ package com.gaff.demo;
  * Last updated 10/28/2022
  * Author(s): Jessica Frank
  */
-
 import com.gaff.demo.models.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ModController {
-    
+
     @Autowired
     GameRepository gameRep;
 
@@ -52,11 +51,17 @@ public class ModController {
         boolean isMobile = false;
 
         for (String option : platformOptions) {
-            platformString += " " + option;
+            if (platformOptions.length > 1 && !option.equals("None")) {
+                platformString += " " + option;
+            }
+            
             switch (option) {
-                case "PC" -> isPC = true;
-                case "Console" -> isConsole = true;
-                case "Mobile" -> isMobile = true;
+                case "PC" ->
+                    isPC = true;
+                case "Console" ->
+                    isConsole = true;
+                case "Mobile" ->
+                    isMobile = true;
             }
         }
 

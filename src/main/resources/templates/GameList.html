@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+List of games on the site
+Last updated 10/30/2022
+Author(s): Alec Droegemeier, Jessica Frank
 -->
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
@@ -16,6 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             .genre-div {
                 display: table;
                 width: 100%;
+                margin-bottom: 10px
             }
             .genre-category {
                 display: table-cell;
@@ -23,6 +25,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 padding: 4px;
             }
             .genre-button {
+                display: inline-block;
                 width: 100%;
             }
         </style>
@@ -33,37 +36,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <h1 style="text-align:center;">List</h1>
             <div class="genre-div">
                 <div class="genre-category">
-                    <button id="action" class="mdl-button mdl-js-button mdl-button--raised">
+                    <button id="action" class="mdl-button mdl-js-button mdl-button--raised genre-button">
                         Action
                     </button>
                 </div>
                 <div class="genre-category">
-                    <button id="adventure" class="mdl-button mdl-js-button mdl-button--raised">
+                    <button id="adventure" class="mdl-button mdl-js-button mdl-button--raised genre-button">
                         Adventure
                     </button>
                 </div>
                 <div class="genre-category">
-                    <button id="simulation" class="mdl-button mdl-js-button mdl-button--raised">
+                    <button id="simulation" class="mdl-button mdl-js-button mdl-button--raised genre-button">
                         Simulation
                     </button>
                 </div>
                 <div class="genre-category">
-                    <button id="puzzle" class="mdl-button mdl-js-button mdl-button--raised">
+                    <button id="puzzle" class="mdl-button mdl-js-button mdl-button--raised genre-button">
                         Puzzle
                     </button>
                 </div>
                 <div class="genre-category">
-                    <button id="racing" class="mdl-button mdl-js-button mdl-button--raised">
+                    <button id="racing" class="mdl-button mdl-js-button mdl-button--raised genre-button">
                         Racing
                     </button>
                 </div>
                 <div class="genre-category">
-                    <button id="sports" class="mdl-button mdl-js-button mdl-button--raised">
+                    <button id="sports" class="mdl-button mdl-js-button mdl-button--raised genre-button">
                         Sports
                     </button>   
                 </div>
             </div>
-            <script type="text/javascript">            
+            <script>            
                 document.getElementById("action").onclick = function () {
                 location.href = "/genre/action";
                 };
