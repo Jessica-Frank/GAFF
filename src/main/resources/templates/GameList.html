@@ -12,74 +12,93 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-teal.min.css" />
         <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+        <style>
+            .genre-div {
+                display: table;
+                width: 100%;
+            }
+            .genre-category {
+                display: table-cell;
+                width: max-content;
+                padding: 4px;
+            }
+            .genre-button {
+                width: 100%;
+            }
+        </style>
     </head>
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
             <h1 style="text-align:center;">List</h1>
-            <button id="myButton" class="mdl-button mdl-js-button mdl-button--raised">
-                Action
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised">
-                Adventure
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised">
-                Simulation
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised">
-                Puzzle
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised">
-                Racing
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised">
-                Sports
-            </button>   
-
-            <script type="text/javascript">
-                document.getElementById("myButton").onclick = function () {
-                location.href = "/game_details";
+            <div class="genre-div">
+                <div class="genre-category">
+                    <button id="action" class="mdl-button mdl-js-button mdl-button--raised">
+                        Action
+                    </button>
+                </div>
+                <div class="genre-category">
+                    <button id="adventure" class="mdl-button mdl-js-button mdl-button--raised">
+                        Adventure
+                    </button>
+                </div>
+                <div class="genre-category">
+                    <button id="simulation" class="mdl-button mdl-js-button mdl-button--raised">
+                        Simulation
+                    </button>
+                </div>
+                <div class="genre-category">
+                    <button id="puzzle" class="mdl-button mdl-js-button mdl-button--raised">
+                        Puzzle
+                    </button>
+                </div>
+                <div class="genre-category">
+                    <button id="racing" class="mdl-button mdl-js-button mdl-button--raised">
+                        Racing
+                    </button>
+                </div>
+                <div class="genre-category">
+                    <button id="sports" class="mdl-button mdl-js-button mdl-button--raised">
+                        Sports
+                    </button>   
+                </div>
+            </div>
+            <script type="text/javascript">            
+                document.getElementById("action").onclick = function () {
+                location.href = "/genre/action";
+                };
+                document.getElementById("adventure").onclick = function () {
+                location.href = "/genre/adventure";
+                };
+                document.getElementById("simulation").onclick = function () {
+                location.href = "/genre/simulation";
+                };
+                document.getElementById("puzzle").onclick = function () {
+                location.href = "/genre/puzzle";
+                };
+                document.getElementById("racing").onclick = function () {
+                location.href = "/genre/racing";
+                };
+                document.getElementById("sports").onclick = function () {
+                location.href = "/genre/sports";
                 };
             </script>
 
+            <div>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp" th:each="game : ${gameList}" style="display:inline-block">
 
-            <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">Apex Legends</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Apex Legends Description
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a onclick="location.href = '/game_details';" id="myButton" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        View Game Details
-                    </a>
-                </div>
-            </div>
-            <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">Rocket League</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Rocket League Description
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a onclick="location.href = '/game_details';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        View Game Details
-                    </a>
-                </div>
-            </div>
-            <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title mdl-card--expand">
-                    <h2 class="mdl-card__title-text">Counter Strike Global Offensive</h2>
-                </div>
-                <div class="mdl-card__supporting-text">
-                    Counter Strike Global Offensive Description
-                </div>
-                <div class="mdl-card__actions mdl-card--border">
-                    <a onclick="location.href = '/game_details';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        View Game Details
-                    </a>
+                    <div class="mdl-card__title mdl-card--expand">
+                        <h2 class="mdl-card__title-text" th:text="${game.name}">Title</h2>
+
+                    </div>
+                    <div class="mdl-card__supporting-text" th:text="${game.description}">
+                        Description
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a onclick="location.href = '/game_details';" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            View Game Details
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
