@@ -37,7 +37,7 @@ public class PlayerController {
         model.addAttribute("hasModRole", hasModRole);
         return "GameTemplate";
     }
-    
+     
     @GetMapping("/genre/action")
     public String getActionGenre(Model model) {
         List<Game> actionGames = gameRep.getActionGames();

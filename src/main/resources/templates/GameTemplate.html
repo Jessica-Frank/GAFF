@@ -13,10 +13,18 @@ Author(s): Alec Droegemeier
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-teal.min.css" />
         <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-        <script>const joinGame = document.getElementById('joinGame');
-        joinGame.addEventListener('click', function handleClick() {
-  joinGame.innerHTML = 'Remove';
-}); </script>
+        <script>
+            function change(){
+            const btn = document.getElementById("joinGame");            
+            if(btn.value === "Join Game"){
+            btn.value = "Leave Game";
+            btn.innerHTML = "Leave Game";
+            }else{
+            btn.value = "Join Game";
+            btn.innerHTML= "Join Game";
+            }          
+            }
+        </script>
     </head>
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
@@ -30,7 +38,7 @@ Author(s): Alec Droegemeier
             </div>
             <div style="margin-top:2.5%;margin-bottom:2.5%; display: inline-block; width:20%; border:2px solid green; ">
                 <h4> Player List</h4>
-                <button id="joinGame" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+                <button  id="joinGame" onclick="change()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value='Join Game'>
                     Join Game
                 </button>
                 <ul class="demo-list-item mdl-list" >

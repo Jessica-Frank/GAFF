@@ -28,13 +28,20 @@ Author(s): Alec Droegemeier, Jessica Frank
                 display: inline-block;
                 width: 100%;
             }
+            
         </style>
+        
     </head>
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
-            <h1 style="text-align:center;">List</h1>
+            <h1 style="text-align:center;">Game List</h1>
             <div class="genre-div">
+                <div class="genre-category">
+                    <button id="all" class="mdl-button mdl-js-button mdl-button--raised genre-button">
+                        All Games
+                    </button>
+                </div>
                 <div class="genre-category">
                     <button id="action" class="mdl-button mdl-js-button mdl-button--raised genre-button">
                         Action
@@ -66,7 +73,10 @@ Author(s): Alec Droegemeier, Jessica Frank
                     </button>   
                 </div>
             </div>
-            <script>            
+            <script> 
+                document.getElementById("all").onclick = function () {
+                location.href = "/game_list";
+                };
                 document.getElementById("action").onclick = function () {
                 location.href = "/genre/action";
                 };
