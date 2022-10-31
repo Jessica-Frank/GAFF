@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 /*
  * This class represents a game's information
- * Last updated 10/28/2022
+ * Last updated 10/30/2022
  * Author(s): Jessica Frank
  */
 @Entity
@@ -29,15 +29,6 @@ public class Game implements Serializable {
     private boolean isMobile;
 
     public Game() {
-    }
-
-    public Game(String name, String genre, String description, boolean isComputer, boolean isConsole, boolean isMobile) {
-        this.name = name;
-        this.genre = genre;
-        this.description = description;
-        this.isComputer = isComputer;
-        this.isConsole = isConsole;
-        this.isMobile = isMobile;
     }
 
     public Game(long id, String name, String genre, String description, boolean isComputer, boolean isConsole, boolean isMobile) {

@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 /*
  * This class represents the GAFF user's information.
  * It is not named User to avoid conflicts with the User class used for login and security
- * Last updated 10/28/2022
+ * Last updated 10/30/2022
  * Author(s): Jessica Frank
  */
 @Entity
@@ -36,14 +36,6 @@ public class AppUser implements Serializable {
     private String steamLink;
 
     public AppUser() {
-    }
-
-    public AppUser(String name, String userRole, String bio, String discordLink, String steamLink) {
-        this.name = name;
-        this.userRole = userRole;
-        this.bio = bio;
-        this.discordLink = discordLink;
-        this.steamLink = steamLink;
     }
 
     public AppUser(long id, String name, String userRole, String bio, String discordLink, String steamLink) {

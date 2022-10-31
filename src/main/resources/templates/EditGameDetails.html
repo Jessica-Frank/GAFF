@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 Page 2 of the game-adding form
-Last updated 10/28/2022
+Last updated 10/30/2022
 Author(s): Jessica Frank
 -->
 <html lang="en"
@@ -32,43 +32,44 @@ Author(s): Jessica Frank
                             <textarea class="mdl-textfield__input" rows= "5" id="game-description" name="details" th:text="${currentDetails}"></textarea>
                             <label class="mdl-textfield__label" for="game-description">Game description</label>
                         </div>
+                        <input type="number" style="visibility: hidden" name="id" th:value="${id}"></input>
                     </div>
                     <div style="margin-top:2.5%;margin-bottom:2.5%; display: inline-block; width:30%; border:2px solid green;">
                         <h6 style="text-align: center">Genre</h6>
                         <ul>
                             <li class="mdl-list__item" ><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-1">
-                                        <input type="radio" id="genre-option-1" class="mdl-radio__button" name="genreOptions" value="Action" th:checked="${genre=='action'}"/>
+                                        <input type="radio" id="genre-option-1" class="mdl-radio__button" name="genreOptions" value="Action" th:checked="${genre=='Action'}"/>
                                         Action
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-2">
-                                        <input type="radio" id="genre-option-2" class="mdl-radio__button" name="genreOptions" value="Adventure" th:checked="${genre=='adventure'}"/>
+                                        <input type="radio" id="genre-option-2" class="mdl-radio__button" name="genreOptions" value="Adventure" th:checked="${genre=='Adventure'}"/>
                                         Adventure
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-3">
-                                        <input type="radio" id="genre-option-3" class="mdl-radio__button" name="genreOptions" value="Simulation" th:checked="${genre=='simulation'}"/>
+                                        <input type="radio" id="genre-option-3" class="mdl-radio__button" name="genreOptions" value="Simulation" th:checked="${genre=='Simulation'}"/>
                                         Simulation
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-4">
-                                        <input type="radio" id="genre-option-4" class="mdl-radio__button" name="genreOptions" value="Puzzle" th:checked="${genre=='puzzle'}"/>
+                                        <input type="radio" id="genre-option-4" class="mdl-radio__button" name="genreOptions" value="Puzzle" th:checked="${genre=='Puzzle'}"/>
                                         Puzzle
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-5">
-                                        <input type="radio" id="genre-option-5" class="mdl-radio__button" name="genreOptions" value="Racing" th:checked="${genre=='racing'}"/>
+                                        <input type="radio" id="genre-option-5" class="mdl-radio__button" name="genreOptions" value="Racing" th:checked="${genre=='Racing'}"/>
                                         Racing
                                     </label>                                
                                 </span></li>
                             <li class="mdl-list__item"><span class="mdl-list__item-secondary-action">
                                     <label class="demo-list-radio mdl-radio mdl-js-radio mdl-js-ripple-effect" for="genre-option-6">
-                                        <input type="radio" id="genre-option-6" class="mdl-radio__button" name="genreOptions" value="Sports" th:checked="${genre=='sports'}"/>
+                                        <input type="radio" id="genre-option-6" class="mdl-radio__button" name="genreOptions" value="Sports" th:checked="${genre=='Sports'}"/>
                                         Sports
                                     </label>                                
                                 </span></li>
