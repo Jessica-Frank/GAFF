@@ -2,7 +2,7 @@ package com.gaff.demo.models;
 
 /*
  * This class interacts with the game database.
- * Last updated 10/28/2022
+ * Last updated 10/30/2022
  * Author(s): Jessica Frank
  */
 import java.sql.PreparedStatement;
@@ -143,7 +143,7 @@ public class GameRepository {
     public Game getGameById(long id) {
         SqlParameterSource namedParameters
                 = new MapSqlParameterSource().addValue("id", id);
-        String query = "SELECT * FROM games WHERE id=:id";
+        String query = "SELECT * FROM games WHERE id= :id";
         return template.queryForObject(query, namedParameters,
                 BeanPropertyRowMapper.newInstance(Game.class));
     }
@@ -171,6 +171,7 @@ public class GameRepository {
     public void editGame(long id, String name, String genre, String description,
             boolean isComputer, boolean isConsole, boolean isMobile) {
         Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("id", id);
         paramMap.put("name", name);
         paramMap.put("genre", genre);
         paramMap.put("description", description);
@@ -178,10 +179,10 @@ public class GameRepository {
         paramMap.put("isConsole", isConsole);
         paramMap.put("isMobile", isMobile);
 
-        String query = "UPDATE games SET"
+        String query = "UPDATE games SET "
                 + "name = :name, genre = :genre, description = :description, "
                 + "is_computer = :isComputer, is_console = :isConsole, "
-                + "is_mobile = :isMobile WHERE id = :id";
+                + "is_mobile = :isMobile WHERE id = :id;";
 
         template.execute(query, paramMap,
                 (PreparedStatement ps) -> ps.executeUpdate());
