@@ -6,7 +6,6 @@ package com.gaff.demo;
  * Author(s): Jessica Frank
  */
 
-import com.gaff.demo.models.AppUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;

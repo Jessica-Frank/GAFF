@@ -7,7 +7,7 @@ package com.gaff.demo;
  * Last updated 10/30/2022
  * Author(s): Jessica Frank
  */
-import com.gaff.demo.models.AppUser;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -49,10 +49,10 @@ public class SecurityConfig {
             .antMatchers("/genre/**").authenticated()
             .antMatchers("/game_details").authenticated()
             .antMatchers("/player_profile").authenticated()
-            .antMatchers("/add_game/**").hasAnyRole("MOD")
-            .antMatchers("/edit_game/**").hasAnyRole("MOD")
-            .antMatchers("/change_role").hasAnyRole("ADM")
-            .antMatchers("/view_logs").hasAnyRole("ADM")
+            .antMatchers("/add_game/**").hasRole("MOD")
+            .antMatchers("/edit_game/**").hasRole("MOD")
+            .antMatchers("/change_role").hasRole("ADM")
+            .antMatchers("/view_logs").hasRole("ADM")
             .and().formLogin().loginPage("/login").permitAll()
             .and().logout().logoutSuccessUrl("/login/again")
             .and().httpBasic();

@@ -5,7 +5,7 @@ package com.gaff.demo;
  * Last updated 10/28/2022
  * Author(s): Alec Droegemeier, Jessica Frank
  */
-import com.gaff.demo.models.AppUser;
+
 import com.gaff.demo.models.Game;
 import com.gaff.demo.models.GameRepository;
 import java.util.List;
@@ -35,7 +35,7 @@ public class PlayerController {
         Game game = gameRep.getGameById(id);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         boolean hasModRole = auth.getAuthorities().stream()
-                .anyMatch(r -> r.getAuthority().equals("ROLE_" + "MOD"));
+                .anyMatch(r -> r.getAuthority().equals("ROLE_MOD"));
         model.addAttribute("hasModRole", hasModRole);
         
         model.addAttribute("id", id);
