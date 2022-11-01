@@ -18,13 +18,7 @@ import javax.persistence.Transient;
 @Table(name = "users")
 public class AppUser implements Serializable {
 
-    @Transient
-    public static final String ROLE_ADMIN = "ADM";
-    @Transient
-    public static final String ROLE_MODERATOR = "MOD";
-    @Transient
-    public static final String ROLE_PLAYER = "PLY";
-
+   
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

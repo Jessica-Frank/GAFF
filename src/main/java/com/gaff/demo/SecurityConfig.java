@@ -26,15 +26,15 @@ public class SecurityConfig {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
         manager.createUser(User.withUsername("player")
             .password("{noop}ppass")
-            .roles(AppUser.ROLE_PLAYER)
+            .roles("PLY")
             .build());
         manager.createUser(User.withUsername("admin")
             .password("{noop}apass")
-            .roles(AppUser.ROLE_ADMIN)
+            .roles("ADM")
             .build());
         manager.createUser(User.withUsername("moderator")
             .password("{noop}mpass")
-            .roles(AppUser.ROLE_MODERATOR)
+            .roles("MOD")
             .build());
         return manager;
     }
@@ -49,10 +49,10 @@ public class SecurityConfig {
             .antMatchers("/genre/**").authenticated()
             .antMatchers("/game_details").authenticated()
             .antMatchers("/player_profile").authenticated()
-            .antMatchers("/add_game/**").hasAnyRole(AppUser.ROLE_MODERATOR)
-            .antMatchers("/edit_game/**").hasAnyRole(AppUser.ROLE_MODERATOR)
-            .antMatchers("/change_role").hasAnyRole(AppUser.ROLE_ADMIN)
-            .antMatchers("/view_logs").hasAnyRole(AppUser.ROLE_ADMIN)
+            .antMatchers("/add_game/**").hasAnyRole("MOD")
+            .antMatchers("/edit_game/**").hasAnyRole("MOD")
+            .antMatchers("/change_role").hasAnyRole("ADM")
+            .antMatchers("/view_logs").hasAnyRole("ADM")
             .and().formLogin().loginPage("/login").permitAll()
             .and().logout().logoutSuccessUrl("/login/again")
             .and().httpBasic();
