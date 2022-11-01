@@ -6,7 +6,6 @@ package com.gaff.demo;
  * Author(s): Jessica Frank
  */
 
-import com.gaff.demo.models.AppUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,13 +21,13 @@ public class DemoController {
         
         //Pass booleans to the home page that describe a user's roles
         boolean hasPlayerRole = auth.getAuthorities().stream()
-          .anyMatch(r -> r.getAuthority().equals("ROLE_"+AppUser.ROLE_PLAYER));
+          .anyMatch(r -> r.getAuthority().equals("ROLE_"+"PLY"));
         model.addAttribute("hasPlayerRole", hasPlayerRole);
         boolean hasModRole = auth.getAuthorities().stream()
-          .anyMatch(r -> r.getAuthority().equals("ROLE_"+AppUser.ROLE_MODERATOR));
+          .anyMatch(r -> r.getAuthority().equals("ROLE_"+"MOD"));
         model.addAttribute("hasModRole", hasModRole);
         boolean hasAdminRole = auth.getAuthorities().stream()
-          .anyMatch(r -> r.getAuthority().equals("ROLE_"+AppUser.ROLE_ADMIN));
+          .anyMatch(r -> r.getAuthority().equals("ROLE_"+"ADM"));
         model.addAttribute("hasAdminRole", hasAdminRole);
         
         boolean hasAnyRole = hasAdminRole || hasModRole || hasPlayerRole;

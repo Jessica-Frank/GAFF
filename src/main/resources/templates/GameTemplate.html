@@ -29,12 +29,12 @@ Author(s): Alec Droegemeier
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
-            <h1 style="text-align:center;">Rocket League</h1>
-            <h4>Description:</h4>
-            <h4>Platforms: PC, Console, Mobile</h4>
-            <h4>Genre: Racing</h4>
+            <h1 style="text-align:center;"><span th:text="${name}"></span></h1>
+            <h4>Description: <span th:text="${details}"></span></h4>
+            <h4>Available Platforms:<span th:if="${isPC}" >PC </span> <span th:if="${isConsole}" >Console </span> <span th:if="${isMobile}" >Mobile</span></h4>
+            <h4>Genre: <span th:text="${genre}"></span></h4>
             <div th:if="${hasModRole}">
-                <a href="/edit_game/id=1">Edit game</a>
+                <a th:href="@{'/edit_game/id=' + ${id}}">Edit game</a>
             </div>
             <div style="margin-top:2.5%;margin-bottom:2.5%; display: inline-block; width:20%; border:2px solid green; ">
                 <h4> Player List</h4>
