@@ -17,10 +17,11 @@ Author(s): Alec Droegemeier
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
-            <h1 style="text-align:center;">Name</h1>
-            <h4>Bio: About You</h4>
+            <h1 style="text-align:center;" <span th:text="${name}"></span>>Name</h1>
+            <h4 <span th:text="${bio}"></span>>Bio: About You</h4>
             <h4>
-                Links: Steam, Discord, Twitter, etc
+                Links: <span th:text="${steam}"> </span> 
+                <span th:text="${discord}"></span>
             </h4>
             <div>       
                 <h2 class="mdl-card__title-text">Favorite Game</h2>

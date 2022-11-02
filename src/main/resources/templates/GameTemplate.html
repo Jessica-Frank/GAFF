@@ -43,24 +43,10 @@ Author(s): Alec Droegemeier
                 </button>
                 <ul class="demo-list-item mdl-list" >
                     <li class="mdl-list__item">
-
-                        <span class="mdl-list__item-primary-content">
-                            <a onclick="location.href = '/player_profile';" class="mdl-list__item-primary-content">
-                                Bryan Cranston
-                            </a>
-                        </span>
-                    </li>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <a onclick="location.href = '/player_profile';" class="mdl-list__item-primary-content">
-                                Aaron Paul
-                            </a>
-                        </span>
-                    </li>
-                    <li class="mdl-list__item">
-                        <span class="mdl-list__item-primary-content">
-                            <a onclick="location.href = '/player_profile';" class="mdl-list__item-primary-content">
-                                Bob Odenkirk
+ 
+                       <span th:each="user: ${userList}" class="mdl-list__item-primary-content">
+                            <a th:text="${user.name}" th:href="@{'/user/' + ${user.id}}" class="mdl-list__item-primary-content">
+                                Player Names
                             </a>
                         </span>
                     </li>
