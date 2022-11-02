@@ -5,9 +5,10 @@ package com.gaff.demo;
  * Last updated 10/28/2022
  * Author(s): Alec Droegemeier, Jessica Frank
  */
-
+import com.gaff.demo.models.AppUser;
 import com.gaff.demo.models.Game;
 import com.gaff.demo.models.GameRepository;
+import com.gaff.demo.models.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -22,6 +23,8 @@ public class PlayerController {
 
     @Autowired
     GameRepository gameRep;
+    @Autowired
+    UserRepository userRep;
 
     @GetMapping("/game_list")
     public String getGameList(Model model) {
@@ -37,7 +40,7 @@ public class PlayerController {
         boolean hasModRole = auth.getAuthorities().stream()
                 .anyMatch(r -> r.getAuthority().equals("ROLE_MOD"));
         model.addAttribute("hasModRole", hasModRole);
-        
+
         model.addAttribute("id", id);
         model.addAttribute("name", game.getName());
         model.addAttribute("details", game.getDescription());
@@ -45,7 +48,10 @@ public class PlayerController {
         model.addAttribute("isPC", game.getIsComputer());
         model.addAttribute("isConsole", game.getIsConsole());
         model.addAttribute("isMobile", game.getIsMobile());
-
+        
+        List<AppUser> users = userRep.getAllUsers();
+        model.addAttribute("userList", users);
+        
         return "GameTemplate";
     }
 
@@ -91,8 +97,15 @@ public class PlayerController {
         return "GameList";
     }
 
-    @GetMapping("/player_profile")
-    public String playerProfile(Model model) {
+    @GetMapping("/user/{id}")
+    public String playerProfile(Model model, @PathVariable("id") long user_id) {
+        AppUser user = userRep.getUserById(user_id);
+        model.addAttribute("user_id", user_id);
+        model.addAttribute("name", user.getName());
+        model.addAttribute("role", user.getUserRole());
+        model.addAttribute("bio", user.getBio());
+        model.addAttribute("discord", user.getDiscordLink());
+        model.addAttribute("steam", user.getSteamLink());
         return "Profile";
     }
 }
