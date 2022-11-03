@@ -24,37 +24,17 @@ Author(s): Alex Wesley
             <div >
             <table class="mdl-data-table mdl-js-data-table" style="margin-left: auto; margin-right: auto;">
                 <thead>
-                    <tr>
+                    <tr >
                         <th class="mdl-data-table__cell--non-numeric">Activity</th>
                         <th>User</th>
                         <th>Time</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Alec connected to play Call of Duty.</td>
-                        <td>Player</td>
-                        <td>Yesterday @4:25pm</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Jessica added Call of Duty as an action game.</td>
-                        <td>Moderator</td>
-                        <td>Yesterday @11:12am</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Alex connected to play Madden 23</td>
-                        <td>Admin</td>
-                        <td>Sunday @5:55pm</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Jessica added Madden 23 as a sports game</td>
-                        <td>Moderator</td>
-                        <td>Saturday @3:15pm</td>
-                    </tr>
-                    <tr>
-                        <td class="mdl-data-table__cell--non-numeric">Jessica was promoted to a Moderator by Alex</td>
-                        <td>Admin</td>
-                        <td>Saturday @11:27am</td>
+                    <tr th:each="action : ${actionList}">
+                        <td class="mdl-data-table__cell--non-numeric" th:text="${action.activity}">Activity that was completed</td>
+                        <td th:text="${action.userName}">Users role</td>
+                        <td th:text="${action.day}">Day of action</td>
                     </tr>
                 </tbody>
             </table>
