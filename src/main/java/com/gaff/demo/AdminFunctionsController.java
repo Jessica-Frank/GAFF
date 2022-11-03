@@ -6,6 +6,11 @@ package com.gaff.demo;
  * Author(s): Alex Wesley, Jessica Frank
  */
 
+import com.gaff.demo.models.ActionRepository;
+import com.gaff.demo.models.Actions;
+import com.gaff.demo.models.Game;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AdminFunctionsController {
+    
+    @Autowired
+    ActionRepository actionRep;
   
   @GetMapping("/change_role")
   public String PromoteDemoteMod(Model model) {
@@ -29,6 +37,8 @@ public class AdminFunctionsController {
   }
   @GetMapping("/view_logs")
   public String ViewSystemLogs (Model model) {
+      List<Actions> actions = actionRep.getAllActions();
+        model.addAttribute("actionList", actions);
       return "ViewSystemLogs";
   }
     
