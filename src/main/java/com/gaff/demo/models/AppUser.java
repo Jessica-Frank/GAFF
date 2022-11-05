@@ -1,12 +1,14 @@
 package com.gaff.demo.models;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /*
  * This class represents the GAFF user's information.
@@ -16,6 +18,7 @@ import javax.persistence.Transient;
  */
 @Entity
 @Table(name = "users")
+@SecondaryTable(name = "connections", pkJoinColumns = @PrimaryKeyJoinColumn(name = "user_id"))
 public class AppUser implements Serializable {
 
    
@@ -28,7 +31,9 @@ public class AppUser implements Serializable {
     private String bio;
     private String discordLink;
     private String steamLink;
-
+    
+ 
+    
     public AppUser() {
     }
 

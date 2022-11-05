@@ -1,0 +1,66 @@
+package com.gaff.demo.models;
+
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
+
+/**
+ *
+ * @author Alec Droegemeier
+ */
+@Entity
+@Table(name = "connections")
+public class Connections implements Serializable {
+    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    private Long game_id;
+
+    private Long user_id;
+    
+   
+    
+ 
+    public Connections() {
+    }
+
+    public Connections(Long user_id, Long game_id) {
+
+        this.user_id = user_id;
+        this.game_id = game_id;
+    }
+
+    
+    //================= GETTERS ===============
+    
+    
+
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public Long getGame_id() {
+        return game_id;
+    }
+
+    
+    //================= SETTERS ===============
+    
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
+
+    public void setGame_id(Long game_id) {
+        this.game_id = game_id;
+    }
+
+
+    
+}

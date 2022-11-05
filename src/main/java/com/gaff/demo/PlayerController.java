@@ -6,6 +6,8 @@ package com.gaff.demo;
  * Author(s): Alec Droegemeier, Jessica Frank
  */
 import com.gaff.demo.models.AppUser;
+import com.gaff.demo.models.Connections;
+import com.gaff.demo.models.ConnectionsRepository;
 import com.gaff.demo.models.Game;
 import com.gaff.demo.models.GameRepository;
 import com.gaff.demo.models.UserRepository;
@@ -25,6 +27,8 @@ public class PlayerController {
     GameRepository gameRep;
     @Autowired
     UserRepository userRep;
+    @Autowired
+    ConnectionsRepository connRep;
 
     @GetMapping("/game_list")
     public String getGameList(Model model) {
@@ -48,6 +52,8 @@ public class PlayerController {
         model.addAttribute("isPC", game.getIsComputer());
         model.addAttribute("isConsole", game.getIsConsole());
         model.addAttribute("isMobile", game.getIsMobile());
+        
+       connRep.addNewUser(id, id);
         
         List<AppUser> users = userRep.getAllUsers();
         model.addAttribute("userList", users);
