@@ -5,6 +5,7 @@ package com.gaff.demo;
  * Last updated 10/30/2022
  * Author(s): Jessica Frank
  */
+import com.gaff.demo.models.ActionRepository;
 import com.gaff.demo.models.Game;
 import com.gaff.demo.models.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,9 @@ public class ModController {
 
     @Autowired
     GameRepository gameRep;
+    
+    @Autowired
+    ActionRepository actionRep;
 
     @GetMapping("/add_game/search")
     public String addGameSearch(Model model) {
@@ -69,6 +73,7 @@ public class ModController {
 
         //Add the game to the database
         gameRep.addNewGame(name, genreOptions, details, isPC, isConsole, isMobile);
+        actionRep.addAction(name + " was added as a(n) " + genreOptions + " game", "Moderator");
 
         //Send game information to the confirmation page
         model.addAttribute("name", name);
@@ -122,6 +127,7 @@ public class ModController {
         }
 
         gameRep.editGame(id, name, genreOptions, details, isPC, isConsole, isMobile);
+        actionRep.addAction(name + " was edited", "Moderator");
 
         model.addAttribute("name", name);
         model.addAttribute("details", details);
