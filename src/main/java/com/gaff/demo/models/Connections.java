@@ -1,31 +1,23 @@
 package com.gaff.demo.models;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.Table;
 
-/**
- *
- * @author Alec Droegemeier
+/*
+ * This class connects the users to the tables
+ * Last updated 11/10/2022
+ * Author(s): Alec Droegemeier
  */
 @Entity
 @Table(name = "connections")
 public class Connections implements Serializable {
     
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long game_id;
-
     private Long user_id;
     
-   
-    
- 
     public Connections() {
     }
 
@@ -39,8 +31,6 @@ public class Connections implements Serializable {
     //================= GETTERS ===============
     
     
-
-
     public Long getUser_id() {
         return user_id;
     }

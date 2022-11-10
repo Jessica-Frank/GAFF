@@ -8,9 +8,10 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author Alec
+/*
+ * These are sql queries for the user table
+ * Last updated 11/10/2022
+ * Author(s): Alec Droegemeier
  */
 @Repository
 public class UserRepository {

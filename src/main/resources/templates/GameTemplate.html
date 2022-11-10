@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 Individual game page
-Last updated 10/30/2022
+Last updated 11/10/2022
 Author(s): Alec Droegemeier
 -->
 <html lang="en"
@@ -43,11 +43,13 @@ Author(s): Alec Droegemeier
                 </button>
                 <ul class="demo-list-item mdl-list" >
                     <li class="mdl-list__item">
- 
-                       <span th:each="user: ${userList}" class="mdl-list__item-primary-content">
-                            <a th:text="${user.name}" th:href="@{'/user/' + ${user.id}}" class="mdl-list__item-primary-content">
-                                Player Names
-                            </a>
+
+                        <span  th:each="user: ${userId}" class="mdl-list__item-primary-content">
+                            <span th:each="userName: ${userList}" th:if="${#lists.contains(userName.id, user.user_id)}" >
+                                <a th:text="${userName.name}" th:href="@{'/user/' + ${user.user_id}}" class="mdl-list__item-primary-content">
+                                    Player Names
+                                </a>
+                            </span>
                         </span>
                     </li>
                 </ul>
