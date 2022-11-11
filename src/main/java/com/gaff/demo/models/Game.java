@@ -1,10 +1,14 @@
 package com.gaff.demo.models;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 /*
@@ -14,6 +18,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "games")
+@SecondaryTable(name = "connections", pkJoinColumns = @PrimaryKeyJoinColumn(name = "game_id"))
 public class Game implements Serializable {
 
     @Id
@@ -70,6 +75,8 @@ public class Game implements Serializable {
     public boolean getIsMobile() {
         return isMobile;
     }
+
+
     
     //================= SETTERS ===============
 
@@ -101,4 +108,6 @@ public class Game implements Serializable {
         this.isMobile = isMobile;
     }
 
+
+    
 }

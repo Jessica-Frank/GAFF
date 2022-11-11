@@ -2,10 +2,12 @@ package com.gaff.demo;
 
 /*
  * This controller is for player-specific sections of the site.
- * Last updated 10/28/2022
+ * Last updated 11/10/2022
  * Author(s): Alec Droegemeier, Jessica Frank
  */
 import com.gaff.demo.models.AppUser;
+import com.gaff.demo.models.Connections;
+import com.gaff.demo.models.ConnectionsRepository;
 import com.gaff.demo.models.Game;
 import com.gaff.demo.models.GameRepository;
 import com.gaff.demo.models.UserRepository;
@@ -25,6 +27,9 @@ public class PlayerController {
     GameRepository gameRep;
     @Autowired
     UserRepository userRep;
+    @Autowired
+    ConnectionsRepository connRep;
+
 
     @GetMapping("/game_list")
     public String getGameList(Model model) {
@@ -36,6 +41,8 @@ public class PlayerController {
     @GetMapping("/game/{id}")
     public String viewGame(Model model, @PathVariable("id") long id) {
         Game game = gameRep.getGameById(id);
+       
+        
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         boolean hasModRole = auth.getAuthorities().stream()
                 .anyMatch(r -> r.getAuthority().equals("ROLE_MOD"));
@@ -49,6 +56,8 @@ public class PlayerController {
         model.addAttribute("isConsole", game.getIsConsole());
         model.addAttribute("isMobile", game.getIsMobile());
         
+        List<Connections> user_id = connRep.getUsersByGame(id);
+        model.addAttribute("userId", user_id);
         List<AppUser> users = userRep.getAllUsers();
         model.addAttribute("userList", users);
         
@@ -109,3 +118,4 @@ public class PlayerController {
         return "Profile";
     }
 }
+
