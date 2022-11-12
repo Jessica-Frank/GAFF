@@ -18,7 +18,7 @@ Author(s): Jessica Frank
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
             <h2 style="text-align:center;">Add New Game</h2>
-            <div style="text-align:center;">RAWG Results for: <span th:text="${nameEntered}">GAME NAME</span></div>
+            <div style="text-align:center;" th:text="${subheadingText}">RAWG Results for:GAME NAME</div>
             <form style="display: flex; flex-direction: column" action = "/add_game/submit" method="POST">
                 <div style="display: flex; flex-direction: row">
                     <div style="margin:2.5%; display: flex; flex-direction: column; width:30%; border:2px solid green;">
