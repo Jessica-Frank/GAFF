@@ -1,32 +1,32 @@
 package com.gaff.demo.models;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
+import org.hibernate.annotations.NaturalId;
 
 /*
  * This class represents the GAFF user's information.
  * It is not named User to avoid conflicts with the User class used for login and security
- * Last updated 10/30/2022
+ * Last updated 11/13/2022
  * Author(s): Jessica Frank
  */
+
 @Entity
 @Table(name = "users")
-@SecondaryTable(name = "connections", pkJoinColumns = @PrimaryKeyJoinColumn(name = "user_id"))
 public class AppUser implements Serializable {
 
    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NaturalId
     private String name;
+    private String password;
     private String userRole;
     private String bio;
     private String discordLink;
@@ -37,9 +37,10 @@ public class AppUser implements Serializable {
     public AppUser() {
     }
 
-    public AppUser(long id, String name, String userRole, String bio, String discordLink, String steamLink) {
+    public AppUser(long id, String name, String password, String userRole, String bio, String discordLink, String steamLink) {
         this.id = id;
         this.name = name;
+        this.password = password;
         this.userRole = userRole;
         this.bio = bio;
         this.discordLink = discordLink;
@@ -53,6 +54,10 @@ public class AppUser implements Serializable {
 
     public String getName() {
         return name;
+    }
+    
+    public String getPassword() {
+        return password;
     }
 
     public String getUserRole() {
@@ -78,6 +83,10 @@ public class AppUser implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setUserRole(String userRole) {

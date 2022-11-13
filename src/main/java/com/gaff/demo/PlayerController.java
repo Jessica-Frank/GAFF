@@ -2,11 +2,10 @@ package com.gaff.demo;
 
 /*
  * This controller is for player-specific sections of the site.
- * Last updated 11/10/2022
+ * Last updated 11/13/2022
  * Author(s): Alec Droegemeier, Jessica Frank
  */
 import com.gaff.demo.models.AppUser;
-import com.gaff.demo.models.Connections;
 import com.gaff.demo.models.ConnectionsRepository;
 import com.gaff.demo.models.Game;
 import com.gaff.demo.models.GameRepository;
@@ -56,9 +55,7 @@ public class PlayerController {
         model.addAttribute("isConsole", game.getIsConsole());
         model.addAttribute("isMobile", game.getIsMobile());
         
-        List<Connections> user_id = connRep.getUsersByGame(id);
-        model.addAttribute("userId", user_id);
-        List<AppUser> users = userRep.getAllUsers();
+        List<AppUser> users = connRep.getUsersByGame(id);
         model.addAttribute("userList", users);
         
         return "GameTemplate";

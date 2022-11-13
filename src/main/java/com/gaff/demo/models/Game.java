@@ -1,24 +1,20 @@
 package com.gaff.demo.models;
 
 import java.io.Serializable;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 /*
  * This class represents a game's information
- * Last updated 10/30/2022
+ * Last updated 11/13/2022
  * Author(s): Jessica Frank
  */
 @Entity
 @Table(name = "games")
-@SecondaryTable(name = "connections", pkJoinColumns = @PrimaryKeyJoinColumn(name = "game_id"))
+//@SecondaryTable(name = "connections", joinColumns = @JoinColumn(name = "game_id"))
 public class Game implements Serializable {
 
     @Id
