@@ -27,16 +27,16 @@ Author(s): Alec Droegemeier, Jessica Frank
             </div>
             <div style="margin-top:2.5%;margin-bottom:2.5%; display: inline-block; width:20%; border:2px solid green; ">
                 <h4> Player List</h4>
-                
+
                 <form style="display: flex; flex-direction: column" th:href="@{'/game/' + ${id}}" method="POST">
-                 <button  id="joinGame" name="action" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value='Join Game'>
-                    Join Game
-                </button>
-                    <button  id="joinGame" name="action" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value='Leave Game'>
-                    Leave Game
-                </button>
+                    <button  id="joinGame" name="action" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value='Join Game'>
+                        Join Game
+                    </button>
+                    <button  id="leaveGame" name="action" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value='Leave Game'>
+                        Leave Game
+                    </button>
                 </form>
-                
+
                 <ul class="demo-list-item mdl-list" >
                     <li th:each="user: ${userList}" class="mdl-list__item">
                         <span class="mdl-list__item-primary-content">

@@ -59,8 +59,6 @@ public class PlayerController {
         List<AppUser> users = connRep.getUsersByGame(id);
         model.addAttribute("userList", users);
 
-//        String name = (String) auth.getPrincipal();
-//        model.addAttribute("currentName", name);
         return "GameTemplate";
     }
 
@@ -91,17 +89,27 @@ public class PlayerController {
         } else {
             username = principal.toString();
         }
-      
-        
+
         if (action.equals("Join Game")) {
-            connRep.addNewConnection(userRep.getUserByName(username).getId(), id);
+            if (connRep.getUsersByGame(id).isEmpty()) {
+                connRep.addNewConnection(userRep.getUserByName(username).getId(), id);
+            }
+            int count = 0;
+            for (int i = 0; i < connRep.getUsersByGame(id).size(); i++) {
+                if(connRep.getUsersByGame(id).get(i).getName().equals(username)) {
+                    count++;
+                }
+            }
+            if(count < 1) {
+                connRep.addNewConnection(userRep.getUserByName(username).getId(), id);
+            }
+
         } else if (action.equals("Leave Game")) {
             connRep.removeConnection(userRep.getUserByName(username).getId(), id);
         }
-        model.addAttribute("action", action);
 
-
-        return "GameTemplate";
+        String url = "redirect:/game/" + id;
+        return url;
     }
 
     @GetMapping("/genre/action")
