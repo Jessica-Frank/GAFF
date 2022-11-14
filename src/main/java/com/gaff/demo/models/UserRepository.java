@@ -18,7 +18,7 @@ public class UserRepository {
 
     @Autowired
     NamedParameterJdbcTemplate template;
-
+    
     public AppUser getUserById(long id) {
         SqlParameterSource namedParameters
                 = new MapSqlParameterSource().addValue("id", id);
@@ -26,7 +26,7 @@ public class UserRepository {
         return template.queryForObject(query, namedParameters,
                 BeanPropertyRowMapper.newInstance(AppUser.class));
     }
-    
+  
     public AppUser getUserByName(String name) {
         SqlParameterSource namedParameters
                 = new MapSqlParameterSource().addValue("name", name);
@@ -34,7 +34,7 @@ public class UserRepository {
         return template.queryForObject(query, namedParameters,
                 BeanPropertyRowMapper.newInstance(AppUser.class));
     }
-    
+     
     public List<AppUser> getAllUsers() {
         String query = "SELECT id, name, password, user_role, bio, "
                 + "discord_link, steam_link FROM users";

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 
 /*
  * These are the sql queries to the connections table
- * Last updated 11/13/2022
+ * Last updated 11/14/2022
  * Author(s): Jessica Frank, Alec Droegemeier
  */
 @Repository
@@ -21,10 +21,10 @@ public class ConnectionsRepository {
 
     @Autowired
     NamedParameterJdbcTemplate template;
-    
+
     @Autowired
     UserRepository userRep;
-    
+
     @Autowired
     GameRepository gameRep;
 
@@ -39,7 +39,7 @@ public class ConnectionsRepository {
                         rs.getLong("game_id")));
         AppUser[] userArray = new AppUser[connections.size()];
         for (int i = 0; i < userArray.length; i++) {
-            userArray[i]= userRep.getUserById(connections.get(i).getUser_id());
+            userArray[i] = userRep.getUserById(connections.get(i).getUser_id());
         }
         return Arrays.asList(userArray);
     }
@@ -55,7 +55,7 @@ public class ConnectionsRepository {
                         rs.getLong("game_id")));
         Game[] gameArray = new Game[connections.size()];
         for (int i = 0; i < gameArray.length; i++) {
-            gameArray[i]= gameRep.getGameById(connections.get(i).getGame_id());
+            gameArray[i] = gameRep.getGameById(connections.get(i).getGame_id());
         }
         return Arrays.asList(gameArray);
     }
@@ -68,6 +68,18 @@ public class ConnectionsRepository {
         String query = "INSERT INTO connections"
                 + "(user_id, game_id) "
                 + "VALUES(:user_id, :game_id)";
+
+        template.execute(query, paramMap,
+                (PreparedStatement ps) -> ps.executeUpdate());
+    }
+
+    public void removeConnection(Long userId, Long gameId) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("user_id", userId);
+        paramMap.put("game_id", gameId);
+
+        String query = "DELETE FROM connections WHERE "
+                + "(user_id, game_id)=(:user_id, :game_id)";
 
         template.execute(query, paramMap,
                 (PreparedStatement ps) -> ps.executeUpdate());
