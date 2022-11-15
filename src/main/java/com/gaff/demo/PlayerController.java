@@ -107,6 +107,7 @@ public class PlayerController {
             }
             if (count < 1) {
                 connRep.addNewConnection(userRep.getUserByName(username).getId(), id);
+                actionRep.addAction(username + " joined " + game.getName(), userRep.getUserByName(username).getUserRole());
             }
 
         } else if (action.equals("Leave Game")) {
