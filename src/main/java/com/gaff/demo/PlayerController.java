@@ -6,6 +6,7 @@ package com.gaff.demo;
  * Author(s): Alec Droegemeier, Jessica Frank
  */
 
+import com.gaff.demo.models.ActionRepository;
 import com.gaff.demo.models.User;
 import com.gaff.demo.models.ConnectionsRepository;
 import com.gaff.demo.models.Game;
@@ -32,6 +33,8 @@ public class PlayerController {
     UserRepository userRep;
     @Autowired
     ConnectionsRepository connRep;
+    @Autowired
+    ActionRepository actionRep;
 
     @GetMapping("/game_list")
     public String getGameList(Model model) {
@@ -94,6 +97,7 @@ public class PlayerController {
         if (action.equals("Join Game")) {
             if (connRep.getUsersByGame(id).isEmpty()) {
                 connRep.addNewConnection(userRep.getUserByName(username).getId(), id);
+                actionRep.addAction(username + " joined " + game.getName(), userRep.getUserByName(username).getUserRole());
             }
             int count = 0;
             for (int i = 0; i < connRep.getUsersByGame(id).size(); i++) {
@@ -107,6 +111,7 @@ public class PlayerController {
 
         } else if (action.equals("Leave Game")) {
             connRep.removeConnection(userRep.getUserByName(username).getId(), id);
+            actionRep.addAction(username + " left " + game.getName(), userRep.getUserByName(username).getUserRole());
         }
 
         String url = "redirect:/game/" + id;
