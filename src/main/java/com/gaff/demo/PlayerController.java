@@ -96,11 +96,11 @@ public class PlayerController {
             }
             int count = 0;
             for (int i = 0; i < connRep.getUsersByGame(id).size(); i++) {
-                if(connRep.getUsersByGame(id).get(i).getName().equals(username)) {
+                if (connRep.getUsersByGame(id).get(i).getName().equals(username)) {
                     count++;
                 }
             }
-            if(count < 1) {
+            if (count < 1) {
                 connRep.addNewConnection(userRep.getUserByName(username).getId(), id);
             }
 
