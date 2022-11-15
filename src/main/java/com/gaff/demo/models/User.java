@@ -1,5 +1,11 @@
 package com.gaff.demo.models;
 
+/*
+ * This class represents the GAFF user's information.
+ * Last updated 11/14/2022
+ * Author(s): Jessica Frank
+ */
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,12 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.hibernate.annotations.NaturalId;
-
-/*
- * This class represents the GAFF user's information.
- * Last updated 11/14/2022
- * Author(s): Jessica Frank
- */
 
 @Entity
 @Table(name = "users")

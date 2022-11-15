@@ -1,5 +1,11 @@
 package com.gaff.demo;
 
+/*
+ * This class is used to load users and their details from our database.
+ * Last updated 11/14/2022
+ * Author(s): Jessica Frank
+ */
+
 import com.gaff.demo.models.User;
 import com.gaff.demo.models.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,11 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-/*
- * This class is used to load users and their details from our database.
- * Last updated 11/14/2022
- * Author(s): Jessica Frank
- */
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired

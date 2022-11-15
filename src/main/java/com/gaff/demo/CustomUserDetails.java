@@ -1,5 +1,11 @@
 package com.gaff.demo;
 
+/*
+ * This class is used to manage user roles.
+ * Last updated 11/14/2022
+ * Author(s): Jessica Frank
+ */
+
 import com.gaff.demo.models.User;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -8,11 +14,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-/*
- * This class is used to manage user roles.
- * Last updated 11/14/2022
- * Author(s): Jessica Frank
- */
 public class CustomUserDetails implements UserDetails {
 
     private User user;

@@ -1,5 +1,11 @@
 package com.gaff.demo.models;
 
+/*
+ * These are the sql queries to the connections table
+ * Last updated 11/14/2022
+ * Author(s): Jessica Frank, Alec Droegemeier
+ */
+
 import java.sql.PreparedStatement;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,11 +17,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-/*
- * These are the sql queries to the connections table
- * Last updated 11/14/2022
- * Author(s): Jessica Frank, Alec Droegemeier
- */
 @Repository
 public class ConnectionsRepository {
 

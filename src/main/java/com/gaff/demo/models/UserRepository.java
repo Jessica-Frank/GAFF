@@ -1,5 +1,11 @@
 package com.gaff.demo.models;
 
+/*
+ * These are sql queries for the user table
+ * Last updated 11/14/2022
+ * Author(s): Alec Droegemeier, Jessica Frank
+ */
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -8,11 +14,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-/*
- * These are sql queries for the user table
- * Last updated 11/14/2022
- * Author(s): Alec Droegemeier, Jessica Frank
- */
 @Repository
 public class UserRepository {
 

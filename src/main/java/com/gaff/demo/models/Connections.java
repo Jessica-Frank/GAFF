@@ -1,5 +1,11 @@
 package com.gaff.demo.models;
 
+/*
+ * This class connects the users to the tables
+ * Last updated 11/13/2022
+ * Author(s): Jessica Frank, Alec Droegemeier
+ */
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,11 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/*
- * This class connects the users to the tables
- * Last updated 11/13/2022
- * Author(s): Jessica Frank, Alec Droegemeier
- */
 @Entity
 @Table(name = "connections")
 public class Connections implements Serializable {

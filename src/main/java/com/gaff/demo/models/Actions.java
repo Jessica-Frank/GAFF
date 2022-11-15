@@ -1,5 +1,11 @@
 package com.gaff.demo.models;
 
+/*
+ * This class represents the actions.
+ * Last updated 11/14/2022
+ * Author(s): Alex Wesley
+ */
+
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -8,11 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * This class represents the actions.
- * Last updated 11/1/22.
- * @author Alex Wesley
- */
 @Entity
 @Table(name = "actions")
 public class Actions implements Serializable {
