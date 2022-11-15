@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 /*
  * These are sql queries for the user table
- * Last updated 11/13/2022
+ * Last updated 11/14/2022
  * Author(s): Alec Droegemeier, Jessica Frank
  */
 @Repository
@@ -18,29 +18,29 @@ public class UserRepository {
 
     @Autowired
     NamedParameterJdbcTemplate template;
-    
-    public AppUser getUserById(long id) {
+
+    public User getUserById(long id) {
         SqlParameterSource namedParameters
                 = new MapSqlParameterSource().addValue("id", id);
         String query = "SELECT * FROM users WHERE id= :id";
         return template.queryForObject(query, namedParameters,
-                BeanPropertyRowMapper.newInstance(AppUser.class));
+                BeanPropertyRowMapper.newInstance(User.class));
     }
-  
-    public AppUser getUserByName(String name) {
+
+    public User getUserByName(String name) {
         SqlParameterSource namedParameters
                 = new MapSqlParameterSource().addValue("name", name);
         String query = "SELECT * FROM users WHERE name= :name";
         return template.queryForObject(query, namedParameters,
-                BeanPropertyRowMapper.newInstance(AppUser.class));
+                BeanPropertyRowMapper.newInstance(User.class));
     }
-     
-    public List<AppUser> getAllUsers() {
+
+    public List<User> getAllUsers() {
         String query = "SELECT id, name, password, user_role, bio, "
                 + "discord_link, steam_link FROM users";
         return template.query(query,
                 (result, rowNum)
-                -> new AppUser(
+                -> new User(
                         result.getLong("id"),
                         result.getString("name"),
                         result.getString("password"),

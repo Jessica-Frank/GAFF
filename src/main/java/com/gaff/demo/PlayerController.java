@@ -2,10 +2,10 @@ package com.gaff.demo;
 
 /*
  * This controller is for player-specific sections of the site.
- * Last updated 11/13/2022
+ * Last updated 11/14/2022
  * Author(s): Alec Droegemeier, Jessica Frank
  */
-import com.gaff.demo.models.AppUser;
+import com.gaff.demo.models.User;
 import com.gaff.demo.models.ConnectionsRepository;
 import com.gaff.demo.models.Game;
 import com.gaff.demo.models.GameRepository;
@@ -56,7 +56,7 @@ public class PlayerController {
         model.addAttribute("isConsole", game.getIsConsole());
         model.addAttribute("isMobile", game.getIsMobile());
 
-        List<AppUser> users = connRep.getUsersByGame(id);
+        List<User> users = connRep.getUsersByGame(id);
         model.addAttribute("userList", users);
 
         return "GameTemplate";
@@ -79,7 +79,7 @@ public class PlayerController {
         model.addAttribute("isConsole", game.getIsConsole());
         model.addAttribute("isMobile", game.getIsMobile());
 
-        List<AppUser> users = connRep.getUsersByGame(id);
+        List<User> users = connRep.getUsersByGame(id);
         model.addAttribute("userList", users);
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -156,7 +156,7 @@ public class PlayerController {
 
     @GetMapping("/user/{id}")
     public String playerProfile(Model model, @PathVariable("id") long user_id) {
-        AppUser user = userRep.getUserById(user_id);
+        User user = userRep.getUserById(user_id);
         model.addAttribute("user_id", user_id);
         model.addAttribute("name", user.getName());
         model.addAttribute("role", user.getUserRole());

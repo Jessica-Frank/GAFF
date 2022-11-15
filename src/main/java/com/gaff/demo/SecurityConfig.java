@@ -4,20 +4,18 @@ package com.gaff.demo;
  * This class controls the site's security, and restricts sections of the site.
  * It currently uses set passwords and usernames for each role, 
  * since the database is not set up yet.
- * Last updated 11/13/2022
+ * Last updated 11/14/2022
  * Author(s): Jessica Frank
  */
-import com.gaff.demo.models.AppUser;
 import com.gaff.demo.models.UserRepository;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
@@ -29,24 +27,17 @@ public class SecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
- 
-        //Create a user in memory for all of the users in the database
-        //I know this is not a good way to do it, but it was the only one that worked 
-        List<AppUser> allUsers = userRep.getAllUsers();
-        for (AppUser user : allUsers) {
-            manager.createUser(User.withUsername(user.getName())
-                    .password("{noop}" + user.getPassword())
-                    .roles(user.getUserRole())
-                    .build());
-        }
-        return manager;
+        return new CustomUserDetailsService();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf().disable()
+        http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").authenticated()
                 .antMatchers("/game_list").authenticated()

@@ -1,6 +1,7 @@
 package com.gaff.demo.models;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,72 +19,55 @@ public class Connections implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long connection_id;
-    private long game_id; 
-    private long user_id;
+    
+    @Column(name="connection_id")
+    private long connectionId;
+    
+    @Column(name="game_id", nullable=false)
+    private long gameId; 
+    
+    @Column(name="user_id", nullable=false)
+    private long userId;
     
     public Connections() {
     }
 
     public Connections(long connectionId, long userId, long gameId) {
-        this.connection_id = connectionId;
-        this.user_id = userId;
-        this.game_id = gameId;
+        this.connectionId = connectionId;
+        this.userId = userId;
+        this.gameId = gameId;
     }
 
     
     //================= GETTERS ===============
     
     
-    public long getConnection_id() {
-        return connection_id;
+    public long getConnectionId() {
+        return connectionId;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public Long getGame_id() {
-        return game_id;
+    public Long getGameId() {
+        return gameId;
     }
 
     
     //================= SETTERS ===============
     
 
-    public void setConnection_id(long connection_id) {
-        this.connection_id = connection_id;
+    public void setConnectionId(long connectionId) {
+        this.connectionId = connectionId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long user_id) {
+        this.userId = user_id;
     }
 
-    public void setGame_id(Long game_id) {
-        this.game_id = game_id;
+    public void setGameId(Long game_id) {
+        this.gameId = game_id;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Connections other = (Connections) obj;
-        return this.user_id == other.user_id;
-    }
-
-
-    
+  
 }
