@@ -17,16 +17,20 @@ Author(s): Alec Droegemeier
     <body style="display:grid; grid-template-rows: auto 1fr auto; min-height:100vh;">
         <div th:insert="Fragments :: header">...</div>
         <div id="body-div">
-            <h1 style="text-align:center;" <span th:text="${name}"></span>>Name</h1>
-            <h4 <span th:text="${bio}"></span>>Bio: About You</h4>
-            <h4>
-                Links: <span th:text="${steam}"> </span> 
-                <span th:text="${discord}"></span>
+            <h1 style="position:relative; left:260px;" <span th:text="${name}"></span>>Name</h1>
+            <div style="position:relative; margin:2.5%; display: flex; flex-direction: column; width:30%; border:2px solid green;">
+            <h4 style="text-align:center;" <span th:text="${bio}"></span>>Bio: About You</h4>
+            <h4 style="text-align:center;">
+              Steam: <span th:text="${steam}"> </span>       
             </h4>
-            <div>       
-                <h2 class="mdl-card__title-text">Joined Games</h2>
+            <h4 style="text-align:center;">
+               Discord: <span th:text="${discord}"></span>
+            </h4>
             </div>
-             <div class="demo-card-square mdl-card mdl-shadow--2dp" th:each="game: ${gameList}" style="display:inline-block">
+            <div>       
+                <h2 style="position:relative; left:20px;" class="mdl-card__title-text">Joined Games</h2>
+            </div>
+             <div class="demo-card-square mdl-card mdl-shadow--2dp" th:each="game: ${gameList}" style="display:inline-block; margin: auto;">
                 <div class="mdl-card__title mdl-card--expand">
                     <h2 th:text="${game.name}" class="mdl-card__title-text">Rocket League</h2>
                 </div>

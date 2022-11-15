@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 Individual game page
-Last updated 11/13/2022
+Last updated 11/14/2022
 Author(s): Alec Droegemeier, Jessica Frank
 -->
 <html lang="en"
@@ -28,7 +28,7 @@ Author(s): Alec Droegemeier, Jessica Frank
             <div style="margin-top:2.5%;margin-bottom:2.5%; display: inline-block; width:20%; border:2px solid green; ">
                 <h4> Player List</h4>
 
-                <form style="display: flex; flex-direction: column" th:href="@{'/game/' + ${id}}" method="POST">
+                <form style="flex-direction: column" th:href="@{'/game/' + ${id}}" method="POST">
                     <button  id="joinGame" name="action" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value='Join Game'>
                         Join Game
                     </button>

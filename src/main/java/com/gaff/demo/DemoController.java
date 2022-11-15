@@ -2,7 +2,7 @@ package com.gaff.demo;
 
 /*
  * This controller is for general sections of the site.
- * Last updated 10/28/2022
+ * Last updated 11/14/2022
  * Author(s): Jessica Frank
  */
 
