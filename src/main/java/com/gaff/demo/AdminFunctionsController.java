@@ -7,6 +7,7 @@ package com.gaff.demo;
  */
 import com.gaff.demo.models.ActionRepository;
 import com.gaff.demo.models.Actions;
+import com.gaff.demo.models.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ public class AdminFunctionsController {
 
     @Autowired
     ActionRepository actionRep;
+    @Autowired
+    UserRepository userRep;
 
     @GetMapping("/change_role")
     public String PromoteDemoteMod(Model model) {
@@ -28,6 +31,11 @@ public class AdminFunctionsController {
 
     @PostMapping("/change_role")
     public String PromoteDemoteModMssg(Model model, @RequestParam String nameVar, @RequestParam String userType) {
+        if (userType.equals("Moderator")) {
+            userRep.changeUserRole(nameVar, "MOD");
+        } else if (userType.equals("Player")) {
+            userRep.changeUserRole(nameVar, "PLY");
+        }
         model.addAttribute("again", true);
         model.addAttribute("name", nameVar);
         model.addAttribute("role", userType);

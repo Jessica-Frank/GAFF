@@ -6,7 +6,10 @@ package com.gaff.demo.models;
  * Author(s): Alec Droegemeier, Jessica Frank
  */
 
+import java.sql.PreparedStatement;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -34,6 +37,15 @@ public class UserRepository {
         String query = "SELECT * FROM users WHERE name= :name";
         return template.queryForObject(query, namedParameters,
                 BeanPropertyRowMapper.newInstance(User.class));
+    }
+    
+    public void changeUserRole(String name, String newRole) {
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("name", name);
+        paramMap.put("newRole", newRole);
+        String query = "UPDATE users SET user_role = :newRole WHERE name= :name";
+        template.execute(query, paramMap,
+                (PreparedStatement ps) -> ps.executeUpdate());
     }
 
     public List<User> getAllUsers() {
