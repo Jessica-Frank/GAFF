@@ -10,6 +10,8 @@ import com.gaff.demo.models.Actions;
 import com.gaff.demo.models.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,11 +33,23 @@ public class AdminFunctionsController {
 
     @PostMapping("/change_role")
     public String PromoteDemoteModMssg(Model model, @RequestParam String nameVar, @RequestParam String userType) {
+        
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String username;
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails) principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
+        
         if (userType.equals("Moderator")) {
+            actionRep.addAction(nameVar + " was promoted to a Moderator ", "Admin");
             userRep.changeUserRole(nameVar, "MOD");
         } else if (userType.equals("Player")) {
+            actionRep.addAction(nameVar + " was demoted to a Player ", "Admin");
             userRep.changeUserRole(nameVar, "PLY");
-        }
+        } 
+        
         model.addAttribute("again", true);
         model.addAttribute("name", nameVar);
         model.addAttribute("role", userType);
