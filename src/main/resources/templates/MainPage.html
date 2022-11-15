@@ -41,7 +41,7 @@ Author(s): Jessica Frank
                         <a class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button" href="/game_list">
                             Game List
                         </a>
-                        <a class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button" href="/player_profile">
+                        <a class="mdl-button mdl-button--raised mdl-button--accent mdl-js-button" th:href="@{'/user/' + ${profile_id}}">
                             View My Profile
                         </a>
                     </div>

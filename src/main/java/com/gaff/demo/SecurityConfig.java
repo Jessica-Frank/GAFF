@@ -30,7 +30,7 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-
+ 
         //Create a user in memory for all of the users in the database
         //I know this is not a good way to do it, but it was the only one that worked 
         List<AppUser> allUsers = userRep.getAllUsers();
