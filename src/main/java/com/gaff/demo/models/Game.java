@@ -1,5 +1,11 @@
 package com.gaff.demo.models;
 
+/*
+ * This class represents a game's information
+ * Last updated 11/13/2022
+ * Author(s): Jessica Frank
+ */
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,11 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/*
- * This class represents a game's information
- * Last updated 11/13/2022
- * Author(s): Jessica Frank
- */
 @Entity
 @Table(name = "games")
 //@SecondaryTable(name = "connections", joinColumns = @JoinColumn(name = "game_id"))

@@ -1,5 +1,11 @@
 package com.gaff.demo.models;
 
+/*
+ * This is a repository for the actions used in the admin log.
+ * Last updated 11/14/2022
+ * Author(s): Alex Wesley
+ */
+
 import java.sql.PreparedStatement;
 import java.util.Date;
 import java.util.HashMap;
@@ -9,10 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author Alex Wesley
- */
 @Repository
 public class ActionRepository {
 

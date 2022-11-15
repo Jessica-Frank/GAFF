@@ -1,5 +1,11 @@
 package com.gaff.demo.models;
 
+/*
+ * These are the sql queries to the connections table
+ * Last updated 11/14/2022
+ * Author(s): Jessica Frank, Alec Droegemeier
+ */
+
 import java.sql.PreparedStatement;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -11,11 +17,6 @@ import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 
-/*
- * These are the sql queries to the connections table
- * Last updated 11/14/2022
- * Author(s): Jessica Frank, Alec Droegemeier
- */
 @Repository
 public class ConnectionsRepository {
 
@@ -28,7 +29,7 @@ public class ConnectionsRepository {
     @Autowired
     GameRepository gameRep;
 
-    public List<AppUser> getUsersByGame(long game_id) {
+    public List<User> getUsersByGame(long game_id) {
         SqlParameterSource parameters = new MapSqlParameterSource("game_id", game_id);
         List<Connections> connections = template.query(
                 "SELECT * FROM connections WHERE game_id IN (:game_id)",
@@ -37,9 +38,9 @@ public class ConnectionsRepository {
                         rs.getLong("connection_id"),
                         rs.getLong("user_id"),
                         rs.getLong("game_id")));
-        AppUser[] userArray = new AppUser[connections.size()];
+        User[] userArray = new User[connections.size()];
         for (int i = 0; i < userArray.length; i++) {
-            userArray[i] = userRep.getUserById(connections.get(i).getUser_id());
+            userArray[i] = userRep.getUserById(connections.get(i).getUserId());
         }
         return Arrays.asList(userArray);
     }
@@ -55,7 +56,7 @@ public class ConnectionsRepository {
                         rs.getLong("game_id")));
         Game[] gameArray = new Game[connections.size()];
         for (int i = 0; i < gameArray.length; i++) {
-            gameArray[i] = gameRep.getGameById(connections.get(i).getGame_id());
+            gameArray[i] = gameRep.getGameById(connections.get(i).getGameId());
         }
         return Arrays.asList(gameArray);
     }

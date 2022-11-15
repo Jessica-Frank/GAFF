@@ -2,13 +2,12 @@ package com.gaff.demo;
 
 /*
  * This controller is for moderator-specific sections of the site.
- * Last updated 11/8/2022
+ * Last updated 11/14/2022
  * Author(s): Jessica Frank
  */
 import com.gaff.demo.models.ActionRepository;
 import com.gaff.demo.models.Game;
 import com.gaff.demo.models.GameRepository;
-import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
